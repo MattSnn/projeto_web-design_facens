@@ -8,7 +8,7 @@ interface BuildingCardProps {
 
 function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
     return (
-        <div className="relative h-[280px] w-[340px] shrink-0 group">
+        <div className="relative h-[320px] w-[340px] shrink-0 group">
 
             <img
                 src={img}
@@ -89,7 +89,7 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                         "
                         >
                             Conheça
-                            <span className="text-lg">→</span>
+                            <span className="text-lg"> →</span>
                         </button>
                     </div>
                 </div>
