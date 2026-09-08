@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+@theme {
+  /* Marca (paleta blue) */
+  --color-brand: #3b82f6;
+  --color-brand-dark: #172554;
+  --color-brand-light: #dbeafe;
+  --color-brand-muted: #2563eb;
+  --color-brand-border: #1e40af;
+  --color-on-brand: #ffffff;
+
+  /* Destaque - botoes e icones que precisam saltar sobre o azul */
+  --color-accent: #38bdf8;
+  --color-accent-hover: #7dd3fc;
+  --color-on-accent: #172554;
+
+  /* Superficies e texto neutro */
+  --color-surface: #ffffff;
+  --color-surface-muted: #e5e7eb;
+  --color-ink: #111827;
+  --color-ink-muted: #9ca3af;
+}
+
 @layer base {
   * {
     margin: 0;

@@ -57,7 +57,7 @@ function CardsCarrosel() {
             <div className="flex items-center">
 
                 <div className="w-[340px] mr-15 flex flex-col items-center justify-center ">
-                    <h2 className="text-4xl font-serif font-medium tracking-tight text-emerald-950 text-center pb-2">
+                    <h2 className="text-4xl font-serif font-medium tracking-tight text-brand-dark text-center pb-2">
                         Imóveis em <br />destaque</h2>
                     <div className="flex gap-2">
                         <button
@@ -65,11 +65,11 @@ function CardsCarrosel() {
                             w-10
                             h-10
                             border-1
-                            border-black
+                            border-brand-dark
                             rounded-md
                             text-xs
-                            text-emerald-950
-                            hover:bg-[#D3D3D3]
+                            text-brand-dark
+                            hover:bg-surface-muted
                             transition"
                             onClick={scrollLeft}>
                             ←
@@ -79,11 +79,11 @@ function CardsCarrosel() {
                             w-10
                             h-10
                             border-1
-                            border-black
+                            border-brand-dark
                             rounded-md
                             text-xs
-                            text-emerald-950
-                            hover:bg-[#D3D3D3]
+                            text-brand-dark
+                            hover:bg-surface-muted
                             transition"
                             onClick={scrollRight}>→</button>
                     </div>

@@ -33,14 +33,14 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                     group-hover:h-[240px]
                     transition-all
                     duration-500
-                    bg-white
+                    bg-surface
                     px-5
                     py-5
                 "
             >
 
                 {/* Nome */}
-                <h2 className="text-xl text-gray-900 mb-4">
+                <h2 className="text-xl text-ink mb-4">
                     {name}
                 </h2>
                 <div className="opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -48,8 +48,8 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                     <div className="flex flex-col gap-3">
 
                         {/* Dormitórios */}
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                            <span className="text-[#B9E94C] text-xl">
+                        <div className="flex items-center gap-2 text-sm text-ink-muted">
+                            <span className="text-accent text-xl">
                                 🛏
                             </span>
 
@@ -57,8 +57,8 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                         </div>
 
                         {/* Área */}
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                            <span className="text-[#B9E94C] text-xl">
+                        <div className="flex items-center gap-2 text-sm text-ink-muted">
+                            <span className="text-accent text-xl">
                                 ◎
                             </span>
 
@@ -66,8 +66,8 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                         </div>
 
                         {/* Localização */}
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                            <span className="text-[#B9E94C] text-xl">
+                        <div className="flex items-center gap-2 text-sm text-ink-muted">
+                            <span className="text-accent text-xl">
                                 ♧
                             </span>
 
@@ -80,11 +80,11 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                             mt-2
                             w-[100px]
                             h-[34px]
-                            bg-[#B9E94C]
+                            bg-accent
                             rounded-md
                             text-xs
-                            text-emerald-950
-                            hover:bg-[#a9dc3e]
+                            text-on-accent
+                            hover:bg-accent-hover
                             transition
                         "
                         >
