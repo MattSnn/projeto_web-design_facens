@@ -11,7 +11,7 @@ const predios = [
         location: "Alto da Boa Vista",
     },
     {
-        name: "Edifício Central",
+        name: "Predio 2",
         img: predio1,
         info: "2 ou 3 dorms",
         area: "60 a 420 m²",
@@ -53,18 +53,18 @@ function CardsCarrosel() {
     }
 
     return (
-        <div className="w-full pt-24 ">
-            <div className="flex items-center">
+        <div className="w-full pt-12 md:pt-24 ">
+            <div className="flex flex-col md:flex-row items-center">
 
-                <div className="w-[340px] mr-15 flex flex-col items-center justify-center ">
-                    <h2 className="text-4xl font-serif font-medium tracking-tight text-brand-dark text-center pb-2">
+                <div className="w-85 mb-15 md:mr-15 flex flex-col items-center justify-center ">
+                    <h2 className=" text-2xl md:text-4xl font-serif font-medium tracking-tight text-brand-dark text-center pb-2">
                         Imóveis em <br />destaque</h2>
                     <div className="flex gap-2">
                         <button
                             className="
-                            w-10
-                            h-10
-                            border-1
+                            w-7 md:w-10
+                            h-7 md:h-10
+                            border
                             border-brand-dark
                             rounded-md
                             text-xs
@@ -76,9 +76,9 @@ function CardsCarrosel() {
                         </button>
                         <button
                             className="
-                            w-10
-                            h-10
-                            border-1
+                            w-7 md:w-10
+                            h-7 md:h-10
+                            border
                             border-brand-dark
                             rounded-md
                             text-xs
@@ -91,9 +91,9 @@ function CardsCarrosel() {
 
                 <div
                     ref={carouselRef}
-                    className="flex-1 overflow-hidden">
+                    className="flex-1 overflow-hidden max-w-full">
 
-                    <div className="flex gap-5">
+                    <div className="flex gap-3 md:gap-5">
                         {predios.map((predio) => (
                             <BuildingCard
                                 key={predio.name}
