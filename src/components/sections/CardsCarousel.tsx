@@ -1,5 +1,5 @@
 import BuildingCard from "../ui/BuildingCard";
-import predio1 from "../../assets/predio-1.jpg"
+import predio1 from "../assets/predio-1.jpg"
 import { useRef } from "react";
 
 const predios = [
@@ -67,7 +67,7 @@ function CardsCarrosel() {
     function scrollRight() {
         if (carouselRef.current) {
             const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
-            
+
             // Se a rolagem atual + o tamanho visível for maior ou igual ao tamanho total (com margem de 5px)
             if (Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 5) {
                 // Volta para o começo
@@ -82,7 +82,7 @@ function CardsCarrosel() {
     function scrollLeft() {
         if (carouselRef.current) {
             const { scrollLeft, scrollWidth } = carouselRef.current;
-            
+
             // Se estiver no começo (com margem de erro de 10px)
             if (scrollLeft <= 10) {
                 // Vai direto para o final
@@ -95,8 +95,10 @@ function CardsCarrosel() {
     }
 
     return (
-        <div className="w-full pt-12 md:pt-24 ">
+        <div className="relative isolate w-full pt-12 md:pt-24 ">
             <div className="flex flex-col md:flex-row items-center">
+
+                <div className="absolute inset-0 -z-10 pointer-events-none bg-linear-to-r from-blue-50 via-transparent to-transparent" />
 
                 <div className="w-85 mb-15 md:mr-15 flex flex-col items-center justify-center ">
                     <h2 className=" text-2xl md:text-4xl font-serif font-medium tracking-tight text-brand-dark text-center pb-2">
@@ -122,7 +124,7 @@ function CardsCarrosel() {
                     <div className="flex gap-3 md:gap-5">
                         {predios.map((predio, index) => (
                             <BuildingCard
-                                key={index} // Alterado para index para evitar erro de chaves duplicadas
+                                key={index}
                                 name={predio.name}
                                 img={predio.img}
                                 info={predio.info}
@@ -130,10 +132,9 @@ function CardsCarrosel() {
                                 location={predio.location}
                             />
                         ))}
-                        
-                        {/* DIV ESPAÇADORA INVISÍVEL NO FINAL DA LISTA */}
-                        <div className="w-1 md:w-1 flex-shrink-0"></div>
-                        
+
+                        <div className="w-1 md:w-1 shrink-0"></div>
+
                     </div>
                 </div>
 

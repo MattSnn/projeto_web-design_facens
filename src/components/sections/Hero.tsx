@@ -1,4 +1,4 @@
-import buildings from "../../assets/buildings.png";
+import buildings from "../assets/buildings.png";
 
 function Hero() {
     return (
