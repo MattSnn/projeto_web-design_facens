@@ -11,7 +11,6 @@ function App() {
       <NavBar />
       <Hero />
       <CardsCarousel />
-      <CardsCarousel />
       <Contact />
       <Footer />
     </div>
