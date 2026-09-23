@@ -1,5 +1,5 @@
-import BuildingCard from "./BuildingCard";
-import predio1 from "../assets/predio-1.jpg"
+import BuildingCard from "../ui/BuildingCard";
+import predio1 from "../../assets/predio-1.jpg"
 import { useRef } from "react";
 
 const predios = [

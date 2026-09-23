@@ -1,8 +1,8 @@
-import NavBar from "./components/NavBar"
-import Footer from "./components/Footer"
-import CardsCarousel from "./components/CardsCarousel"
-import Hero from "./components/Hero"
-import Contact from "./components/Contact"
+import NavBar from "./components/layout/NavBar"
+import Footer from "./components/layout/Footer"
+import CardsCarousel from "./components/sections/CardsCarousel"
+import Hero from "./components/sections/Hero"
+import Contact from "./components/sections/Contact"
 
 function App() {
 
