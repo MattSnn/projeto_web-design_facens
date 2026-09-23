@@ -5,7 +5,7 @@ function NavBar()
             <a href="#inicio" className="font-black text-on-brand text-lg md:text-2xl" >Imobiliaria</a>
             <div className="text-right flex justify-end w-full gap-2 md:gap-5 text-shadow-brand-dark text-sm md:text-lg font-bold flex-wrap">
                 <a href="#oportunidades">Oportunidades</a>
-                <a href="#contato">Contato</a>
+                <a href="#contato">Contatoo</a>
             </div>
         </nav>
     )

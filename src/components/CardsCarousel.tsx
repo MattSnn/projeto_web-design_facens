@@ -31,25 +31,68 @@ const predios = [
         area: "60 a 420 m²",
         location: "São Paulo",
     },
+    {
+        name: "Boa Vista Towers",
+        img: predio1,
+        info: "2 ou 3 dorms",
+        area: "43 a 614 m²",
+        location: "Alto da Boa Vista",
+    },
+    {
+        name: "Predio 2",
+        img: predio1,
+        info: "2 ou 3 dorms",
+        area: "60 a 420 m²",
+        location: "São Paulo",
+    },
+    {
+        name: "Edifício Central",
+        img: predio1,
+        info: "2 ou 3 dorms",
+        area: "60 a 420 m²",
+        location: "São Paulo",
+    },
+    {
+        name: "Edifício Central",
+        img: predio1,
+        info: "2 ou 3 dorms",
+        area: "60 a 420 m²",
+        location: "São Paulo",
+    },
 ]
 
 
 function CardsCarrosel() {
-
     const carouselRef = useRef<HTMLDivElement>(null)
 
     function scrollRight() {
-        carouselRef.current?.scrollBy({
-            left: 300,
-            behavior: "smooth"
-        })
+        if (carouselRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+            
+            // Se a rolagem atual + o tamanho visível for maior ou igual ao tamanho total (com margem de 10px)
+            if (Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 10) {
+                // Volta para o começo
+                carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+                // Continua rolando
+                carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+            }
+        }
     }
 
     function scrollLeft() {
-        carouselRef.current?.scrollBy({
-            left: -300,
-            behavior: "smooth"
-        })
+        if (carouselRef.current) {
+            const { scrollLeft, scrollWidth } = carouselRef.current;
+            
+            // Se estiver no começo (com margem de erro de 10px)
+            if (scrollLeft <= 10) {
+                // Vai direto para o final
+                carouselRef.current.scrollTo({ left: scrollWidth, behavior: "smooth" });
+            } else {
+                // Continua voltando
+                carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+            }
+        }
     }
 
     return (
