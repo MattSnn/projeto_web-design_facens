@@ -7,57 +7,57 @@ const predios = [
         name: "Boa Vista Towers",
         img: predio1,
         info: "2 ou 3 dorms",
-        area: "43 a 614 m²",
+        area: "43 a 85 m²",
         location: "Alto da Boa Vista",
     },
     {
-        name: "Predio 2",
+        name: "Horizonte Moema",
         img: predio1,
-        info: "2 ou 3 dorms",
-        area: "60 a 420 m²",
-        location: "São Paulo",
+        info: "3 a 4 dorms (2 suítes)",
+        area: "120 a 240 m²",
+        location: "Moema",
     },
     {
-        name: "Edifício Central",
+        name: "Vila Madalena",
         img: predio1,
-        info: "2 ou 3 dorms",
-        area: "60 a 420 m²",
-        location: "São Paulo",
+        info: "Studio e 1 dorm",
+        area: "35 a 55 m²",
+        location: "Vila Madalena",
     },
     {
-        name: "Edifício Central",
+        name: "Jardins Prime",
         img: predio1,
-        info: "2 ou 3 dorms",
-        area: "60 a 420 m²",
-        location: "São Paulo",
+        info: "4 dorms (4 suítes)",
+        area: "200 a 420 m²",
+        location: "Jardim Paulista",
     },
     {
-        name: "Boa Vista Towers",
+        name: "Pinheiros Design",
         img: predio1,
-        info: "2 ou 3 dorms",
-        area: "43 a 614 m²",
-        location: "Alto da Boa Vista",
+        info: "1 a 3 dorms",
+        area: "50 a 110 m²",
+        location: "Pinheiros",
     },
     {
-        name: "Predio 2",
+        name: "Urban Tatuapé",
         img: predio1,
-        info: "2 ou 3 dorms",
-        area: "60 a 420 m²",
-        location: "São Paulo",
+        info: "2 dorms (1 suíte)",
+        area: "65 a 90 m²",
+        location: "Tatuapé",
     },
     {
-        name: "Edifício Central",
+        name: "Terraço Ibirapuera",
         img: predio1,
-        info: "2 ou 3 dorms",
-        area: "60 a 420 m²",
-        location: "São Paulo",
+        info: "3 dorms (1 a 3 suítes)",
+        area: "140 a 300 m²",
+        location: "Vila Mariana",
     },
     {
-        name: "Edifício Central",
+        name: "Oásis Brooklin",
         img: predio1,
-        info: "2 ou 3 dorms",
-        area: "60 a 420 m²",
-        location: "São Paulo",
+        info: "1 ou 2 dorms",
+        area: "45 a 75 m²",
+        location: "Brooklin",
     },
 ]
 
@@ -68,8 +68,8 @@ function CardsCarrosel() {
         if (carouselRef.current) {
             const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
             
-            // Se a rolagem atual + o tamanho visível for maior ou igual ao tamanho total (com margem de 10px)
-            if (Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 10) {
+            // Se a rolagem atual + o tamanho visível for maior ou igual ao tamanho total (com margem de 5px)
+            if (Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 5) {
                 // Volta para o começo
                 carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
             } else {
@@ -132,7 +132,7 @@ function CardsCarrosel() {
                         ))}
                         
                         {/* DIV ESPAÇADORA INVISÍVEL NO FINAL DA LISTA */}
-                        <div className="w-2 md:w-8 flex-shrink-0"></div>
+                        <div className="w-1 md:w-1 flex-shrink-0"></div>
                         
                     </div>
                 </div>
