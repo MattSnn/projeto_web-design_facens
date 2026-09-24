@@ -1,11 +1,18 @@
-function NavBar()
-{
-    return(
-        <nav className="bg-brand-dark w-full z-1 py-4 px-4 top-0 fixed flex items-center">
-            <a href="#inicio" className="font-black text-on-brand text-lg md:text-2xl" >ImobiFaces</a>
-            <div className="text-right flex justify-end w-full gap-2 md:gap-5 text-shadow-brand-dark text-sm md:text-lg font-bold flex-wrap">
-                <a href="#oportunidades">Oportunidades</a>
-                <a href="#contato">Contato</a>
+function NavBar() {
+    return (
+        <nav className="bg-white w-full z-1 py-5 px-15 top-0 fixed flex items-center">
+            <div className="font-black flex-1 text-lg md:text-2xl" >
+                <a href="#inicio" className="text-black">Imobi</a>
+                <a href="#inicio" className="text-brand-muted">Faces</a>
+            </div>
+            <div className="flex gap-4 font-bold text-[#55627a] ">
+                <a href="">Início</a>
+                <a href="">Oportunidades</a>
+                <a href="">Sobre nós</a>
+            </div>
+            <div className="text-right flex flex-1 justify-end w-fullflex-wrap">
+                <a href="#contato" className="bg-brand-muted font-bold text-white px-4 py-3 rounded-3xl">
+                    Falar com um especialista</a>
             </div>
         </nav>
     )
