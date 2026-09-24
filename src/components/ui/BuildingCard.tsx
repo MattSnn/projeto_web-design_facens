@@ -28,6 +28,7 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                     absolute
                     left-0
                     bottom-0
+                    rounded-tr-4xl
                     w-full md:w-55
                     h-13 md:h-18.75
                     group-hover:h-60
@@ -40,7 +41,7 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
             >
 
                 {/* Nome */}
-                <h2 className="text-md md:text-xl text-ink mb-4">
+                <h2 className="text-md font-bold md:text-xl text-ink mb-4">
                     {name}
                 </h2>
                 <div className="opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -75,21 +76,30 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                         </div>
 
                         {/* Botão */}
-                        <button
-                            className="
-                            mt-2
-                            w-25
-                            h-8.5
-                            bg-accent
-                            rounded-md
-                            text-xs
-                            text-on-accent
-                            hover:bg-accent-hover
-                            transition
-                        "
-                        >
-                            Conheça
-                            <span className="text-lg"> →</span>
+                        <button className="
+                        mt-2
+                         w-25 
+                         h-8.5 
+                         bg-accent 
+                         rounded-md 
+                         text-xs 
+                         text-on-accent 
+                         hover:bg-accent-hover 
+                         transition 
+                         flex 
+                         items-center 
+                         justify-center 
+                         font-bold 
+                         gap-1.5">
+                            
+                            <span>Conheça</span>
+                            <span className="
+                            inline-flex
+                            items-center
+                            leading-none
+                            text-sm
+                            select-none
+                            ">→</span>
                         </button>
                     </div>
                 </div>
