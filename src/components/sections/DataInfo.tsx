@@ -1,26 +1,29 @@
 import InfoCard from "../ui/InfoCard";
 import casa1 from "../assets/casa-card-1.jpg"
+import Corretores from "../assets/corretor.png"
+import Familias from "../assets/FamiliasAtendidas.jpg"
+import ImobiFaces from "../assets/ImobiFacens.jpg"
 
 const CARDS_INFO = [
     {
-        name: "Imoveis vendidos",
-        value: "2.345.123",
+        name: "Imoveis Vendidos:",
+        value: "345.123",
         image: casa1
     },
     {
-        name: "teste2",
-        value: "value2",
-        image: "temp"
+        name: "Famílias Atendidas",
+        value: "496.589",
+        image: Familias
     },
     {
-        name: "teste3",
-        value: "value3",
-        image: "temp"
+        name: "Anos de Mercado:",
+        value: "15",
+        image: ImobiFaces
     },
     {
-        name: "teste3",
-        value: "value3",
-        image: "temp"
+        name: "Corretores Especialistas:",
+        value: "25",
+        image: Corretores
     }
 ]
 
