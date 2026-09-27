@@ -33,9 +33,10 @@ function DataInfo() {
 
             <div className="absolute inset-0 -z-10 pointer-events-none bg-linear-to-r from-blue-50 via-transparent to-transparent" />
 
-            <div className="flex justify-center gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 justify-center gap-6">
                 {CARDS_INFO.map((card) => (
                     <div
+                        className="w-full"
                         key={card.name}
                     >
                         <InfoCard

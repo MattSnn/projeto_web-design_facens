@@ -9,8 +9,8 @@ interface InfoCardProps {
 function InfoCard({ name, value, image }: InfoCardProps) {
     return (
         <div
-            className="relative w-80 h-48 overflow-hidden rounded-xl bg-cover bg-center shadow-lg"
-            style={{ backgroundImage: `url(${image})` }}
+            className="relative w-full w-max-80 h-48 overflow-hidden rounded-xl bg-cover bg-center shadow-lg"
+            style={{ backgroundImage: `url(${image})`, backgroundPosition: 'center' }}
         >
             <div className="absolute inset-0 bg-linear-to-tr from-blue-950 via-blue-950/70 to-transparent" />
 
