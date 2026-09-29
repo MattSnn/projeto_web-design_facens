@@ -9,12 +9,12 @@ function Hero() {
                 <div className="flex h-screen items-center justify-center px-6">
                     <div className="max-w-2xl text-center">
 
-                        <h1 className="font-['Times_New_Roman'] text-6xl md:text-8xl font-medium tracking-tight">
+                        <h1 className="font-family: ['inter'] text-6xl md:text-8xl font-medium tracking-tight">
                             <span className="text-white">Imobi</span>
                             <span className="text-blue-400">Faces</span>
                         </h1>
 
-                        <p className="mt-6 text-base md:text-lg text-white/80 leading-relaxed">
+                        <p className="font-family: ['inter'] mt-5 text-base md:text-lg text-white/80 leading-relaxed">
                             Há mais de 15 anos conectando pessoas aos seus lares ideais.
                             Somos especialistas em imóveis de alto padrão, unindo
                             atendimento próximo, confiança e as melhores oportunidades
