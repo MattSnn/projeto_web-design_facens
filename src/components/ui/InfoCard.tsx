@@ -9,14 +9,14 @@ interface InfoCardProps {
 function InfoCard({ name, value, image }: InfoCardProps) {
     return (
         <div
-            className="relative w-full w-max-80 h-48 overflow-hidden rounded-xl bg-cover bg-center shadow-lg"
+            className="relative w-full hover:scale-110 transition-all duration-600 w-max-80 h-48 overflow-hidden rounded-xl bg-cover bg-center shadow-lg"
             style={{ backgroundImage: `url(${image})`, backgroundPosition: 'center' }}
         >
             <div className="absolute inset-0 bg-linear-to-tr from-blue-950 via-blue-950/70 to-transparent" />
 
             <div className="absolute bottom-0 left-0 p-6 text-white">
 
-                <p className="mt-1 text-md font-medium text-blue-200">
+                <p className="mt-1 text-md font-bold text-blue-200">
                     {name}
                 </p>
 
