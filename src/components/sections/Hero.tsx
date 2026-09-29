@@ -21,10 +21,10 @@ function Hero() {
                             do mercado imobiliário.
                         </p>
 
-                        <div className="pt-10 text-white gap-6 flex">
-                            <button className="px-6 py-3 rounded-full  bg-brand-muted border border-white/20 text-white font-semibold  hover:bg-brand-muted/70 transition-all duration-300">
+                        <div className="pt-10 text-white  gap-6 flex">
+                            <button className="px-6 py-3 rounded-full hover:cursor-pointer bg-brand-muted border border-white/20 text-white font-semibold  hover:bg-brand-muted/70 transition-all duration-300">
                                 Ver oportunidades</button>
-                            <button className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold shadow-lg hover:bg-white/20 transition-all duration-300">
+                            <button className="px-6 py-3 rounded-full hover:cursor-pointer bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold shadow-lg hover:bg-white/20 transition-all duration-300">
                                 Falar com um especialista
                             </button>
                         </div>
