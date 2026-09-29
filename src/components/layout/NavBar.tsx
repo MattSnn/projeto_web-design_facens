@@ -39,7 +39,7 @@ function NavBar() {
                     onClick={() => setIsOpen(!isOpen)}
                     type="button"
                     aria-label="Abrir menu"
-                    className="flex flex-col items-center justify-center gap-1.5 w-10 h-10 md:ml-2"
+                    className="flex flex-col transiction-all hover:scale-105 hover:cursor-pointer items-center justify-center gap-1.5 w-10 h-10 md:ml-2"
                 >
                     <span className="block h-0.5 w-6 bg-black" />
                     <span className="block h-0.5 w-6 bg-black" />
@@ -56,7 +56,7 @@ function NavBar() {
             {/* Gaveta lateral */}
             <aside
                 aria-hidden={!isOpen}
-                className={`fixed top-0 right-0 z-40 h-full w-64 md:w-80 bg-white shadow-xl px-6 pt-24 pb-6 flex flex-col gap-6 font-bold text-[#55627a] transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
+                className={`fixed top-0 right-0 z-40 h-full w-64 md:w-80 bg-white shadow-xl px-6 pt-24 pb-6 flex flex-col gap-6 font-bold text-[#55627a]  transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
                     }`}
             >
                 {/* Links principais: só no celular, porque no PC já estão na barra */}
