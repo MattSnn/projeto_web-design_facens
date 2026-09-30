@@ -92,7 +92,8 @@ function NavBar({ setActivePage, LinkIDs }: NavBarProps) {
                     <span className="text-xs uppercase tracking-wider text-gray-400">
                         Mais páginas
                     </span>
-                    <a onClick={() => setActivePage("todosOsApartamentos")} className="text-lg hover:text-[#222833]">Todos os apartamentos</a>
+                    <a onClick={(e) => {setActivePage("initialPage"); e.preventDefault(); closeMenu()}} href="" className="text-lg hover:text-[#222833]">Página Inicial</a>
+                    <a onClick={(e) => {setActivePage("todosOsApartamentos"); e.preventDefault(); closeMenu()}} href="" className="text-lg hover:text-[#222833]">Todos os apartamentos</a>
                     <a href="#faq" className="text-lg hover:text-[#222833]">Perguntas frequentes</a>
                     <a href="#carreiras" className="text-lg hover:text-[#222833]">Trabalhe conosco</a>
                 </div>
