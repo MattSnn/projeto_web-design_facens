@@ -1,20 +1,27 @@
+import InitialPage from "./pages/InitialPage"
 import NavBar from "./components/layout/NavBar"
-import Footer from "./components/layout/Footer"
-import CardsCarousel from "./components/sections/CardsCarousel"
-import Hero from "./components/sections/Hero"
-import Contact from "./components/sections/Contact"
-import DataInfo from "./components/sections/DataInfo"
+import {useState} from "react"
+import type {ReactElement} from "react"
+
+const PAGES: Record<string, ReactElement> = {
+  initialPage: <InitialPage />,
+  // todosOsApartamentos: <TododsOsApartamentosPage />,
+}
 
 function App() {
+  const [activePage, setActivePage] = useState<string>("initialPage")
 
-  return (
+  return(
     <div>
-      <NavBar />
-      <Hero />
-      <CardsCarousel />
-      <DataInfo />
-      <Contact />
-      <Footer />
+      <NavBar 
+        LinkIDs={[
+          {id: "inicio", label: "Início"},
+          {id: "oportunidades", label: "Oportunidades"},
+          {id: "contato", label: "Contato"},
+        ]}
+        setActivePage={setActivePage}
+      />
+      {PAGES[activePage] ?? PAGES["initialPage"]}
     </div>
   )
 }

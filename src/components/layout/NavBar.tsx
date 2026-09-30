@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 
-function NavBar() {
+interface NavBarProps {
+    setActivePage: (page: string) => void
+    LinkIDs: Array<{
+        id: string;
+        label: string;
+    }>
+}
+
+
+function NavBar({ setActivePage, LinkIDs }: NavBarProps) {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -23,9 +32,15 @@ function NavBar() {
                     <a href="#inicio" className="text-brand-muted">Faces</a>
                 </div>
                 <div className="hidden md:flex gap-4 lg:gap-6 text-sm font-bold text-[#55627a]">
-                    <a href=" " className="transition-all hover:text-[#222833]">Início</a>
-                    <a href=" " className="transition-all hover:text-[#222833]">Oportunidades</a>
-                    <a href=" " className="transition-all hover:text-[#222833]">Sobre nós</a>
+                    {LinkIDs.map((link) => (
+                        <a
+                            key={link.id}
+                            href={`#${link.id}`}
+                            className="transition-all hover:text-[#222833]"
+                        >
+                            {link.label}
+                        </a>
+                    ))}
                 </div>
                 <div className="hidden md:flex flex-1 justify-end">
                     <a
@@ -61,9 +76,15 @@ function NavBar() {
             >
                 {/* Links principais: só no celular, porque no PC já estão na barra */}
                 <div className="flex flex-col text-lg gap-6 md:hidden">
-                    <a href="#inicio" className="">Início</a>
-                    <a href="#oportunidades" className="">Oportunidades</a>
-                    <a href="#sobre" className="">Sobre nós</a>
+                    {LinkIDs.map((link) => (
+                        <a
+                            key={link.id}
+                            href={`#${link.id}`}
+                            className="transition-all hover:text-[#222833]"
+                        >
+                            {link.label}
+                        </a>
+                    ))}
                 </div>
 
                 {/* Outras abas do site: aparecem em todas as telas */}
@@ -71,7 +92,7 @@ function NavBar() {
                     <span className="text-xs uppercase tracking-wider text-gray-400">
                         Mais páginas
                     </span>
-                    <a href="#blog" className="text-lg hover:text-[#222833]">Blog</a>
+                    <a onClick={() => setActivePage("todosOsApartamentos")} className="text-lg hover:text-[#222833]">Todos os apartamentos</a>
                     <a href="#faq" className="text-lg hover:text-[#222833]">Perguntas frequentes</a>
                     <a href="#carreiras" className="text-lg hover:text-[#222833]">Trabalhe conosco</a>
                 </div>

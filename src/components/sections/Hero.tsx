@@ -2,7 +2,7 @@ import buildings from "../assets/buildings.png";
 
 function Hero() {
     return (
-        <section className="relative min-h-screen w-full bg-cover bg-center bg-no-repeat"
+        <section id="inicio" className="relative min-h-screen w-full bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${buildings})` }}>
 
             <div className="absolute inset-0 bg-linear-to-r from-brand-full-dark via-brand-full-dark/60 to-brand-full-dark/25">

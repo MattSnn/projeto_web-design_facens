@@ -95,7 +95,7 @@ function CardsCarrosel() {
     }
 
     return (
-        <div className="relative isolate w-full pt-12 md:pt-24 ">
+        <div id="oportunidades" className="relative isolate w-full pt-12 md:pt-24 ">
             <div className="flex flex-col md:flex-row items-center">
 
                 <div className="absolute inset-0 -z-10 pointer-events-none bg-linear-to-r from-blue-50 via-transparent to-transparent" />
