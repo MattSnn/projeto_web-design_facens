@@ -1,19 +1,18 @@
 import BuildingCard from "../ui/BuildingCard";
 import { useRef } from "react";
 
-type Predio = 
-    {
-        name: string;
-        img: string;
-        info: string;
-        area: string;
-        location: string;
-    };
+type Predio = {
+    name: string;
+    img: string;
+    info: string;
+    area: string;
+    location: string;
+};
 
 type AptoListProps = {
-        title: string;
-        predios: Predio[];
-}
+    title: string;
+    predios: Predio[];
+};
 
 
 function AptoList({title, predios}: AptoListProps) {
