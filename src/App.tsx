@@ -11,10 +11,9 @@ const navBarLinks: Record<string, Array<{id: string, label: string}>> = {
     {id: "contato", label: "contato"},
   ],
   todosOsApartamentos: [
-    {id: "inicio", label: "Início"},
-    {id: "planta", label: "Planta"},
-    {id: "especificacoes", label: "Especificações"},
-    {id: "valor", label: "Valor"},
+    {id: "alugar", label: "Alugar"},
+    {id: "comprar", label: "Comprar"},
+    {id: "contato", label: "contato"},
   ],
 }
 
