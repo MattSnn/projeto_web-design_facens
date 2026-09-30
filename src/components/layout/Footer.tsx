@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <footer className="bg-brand-dark w-full text-brand-light py-4 px-4 mt-10 bottom-0">
+       <footer className="bg-brand-dark w-full text-brand-light py-4 px-4">
             <div className="max-w-6xl mx-auto">
                 <div className="md:flex w-full">
                     <div className="flex-1">
@@ -29,4 +29,4 @@ function Footer() {
     )
 }
 
-export default Footer
+export default Footer 
