@@ -3,7 +3,8 @@ import casa1 from "../assets/casa-card-1.jpg"
 import Corretores from "../assets/corretor.png"
 import Familias from "../assets/FamiliasAtendidas.jpg"
 import ImobiFaces from "../assets/ImobiFacens.jpg"
-
+import Separation
+ from "../ui/Separation";
 const CARDS_INFO = [
     {
         name: "Imoveis Vendidos:",
@@ -30,6 +31,13 @@ const CARDS_INFO = [
 function DataInfo() {
     return (
         <div className="relative isolate w-full px-8 py-16">
+
+            <Separation/>
+
+            <div className="content-center text-center justify-center mx-auto">
+                <h1 className="font-bold text-3xl pb-10">Sobre nós</h1>
+            </div>
+
 
             <div className="absolute inset-0 -z-10 pointer-events-none bg-linear-to-r from-blue-50 via-transparent to-transparent" />
 
