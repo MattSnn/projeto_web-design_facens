@@ -1,5 +1,4 @@
-import BuildingCard from "../ui/BuildingCard";
-import { useRef } from "react";
+import CardsList from "../ui/CardsList";
 
 type Predio = {
     name: string;
@@ -8,76 +7,40 @@ type Predio = {
     area: string;
     location: string;
 };
-
+ 
 type AptoListProps = {
     title: string;
     predios: Predio[];
 };
-
-
-function AptoList({title, predios}: AptoListProps) {
-    const aptoRef = useRef<HTMLDivElement>(null)
-
-    function scrollRight() {
-        if (aptoRef.current) {
-            const { scrollLeft, scrollWidth, clientWidth } = aptoRef.current;
-
-            // Se a rolagem atual + o tamanho visível for maior ou igual ao tamanho total (com margem de 5px)
-            if (Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 5) {
-                // Volta para o começo
-                aptoRef.current.scrollTo({ left: 0, behavior: "smooth" });
-            } else {
-                // Continua rolando
-                aptoRef.current.scrollBy({ left: 300, behavior: "smooth" });
-            }
-        }
-    }
-
-    function scrollLeft() {
-        if (aptoRef.current) {
-            const { scrollLeft, scrollWidth } = aptoRef.current;
-
-            // Se estiver no começo (com margem de erro de 10px)
-            if (scrollLeft <= 10) {
-                // Vai direto para o final
-                aptoRef.current.scrollTo({ left: scrollWidth, behavior: "smooth" });
-            } else {
-                // Continua voltando
-                aptoRef.current.scrollBy({ left: -300, behavior: "smooth" });
-            }
-        }
-    }
+ 
+ 
+function AptoList({ title, predios }: AptoListProps) {
 
     return (
-        <div id="oportunidades" className="relative isolate w-full pt-12 md:pt-24 ">
-            <div className="flex flex-col md:flex-row items-center">
-
-                <div className="absolute inset-0 -z-10 pointer-events-none bg-linear-to-r from-blue-50 via-transparent to-transparent" />
-
-                <div className="w-85 mb-15 md:mr-15 flex flex-col items-center justify-center ">
-                    <h2 className=" text-2xl md:text-4xl font-serif font-medium tracking-tight text-brand-dark text-center pb-2">
-                        {title}</h2>
-                    <div className="flex gap-2">
-                        <button
-                            className="w-7 md:w-10 h-7 md:h-10 border border-brand-dark rounded-md text-xs text-brand-dark hover:bg-surface-muted transition"
-                            onClick={scrollLeft}>
-                            ←
-                        </button>
-                        <button
-                            className="w-7 md:w-10 h-7 md:h-10 border border-brand-dark rounded-md text-xs text-brand-dark hover:bg-surface-muted transition"
-                            onClick={scrollRight}>
-                            →
-                        </button>
-                    </div>
-                </div>
-
-                <div
-                    ref={aptoRef}
-                    className="flex-1 overflow-hidden max-w-full">
-
-                    <div className="flex gap-3 md:gap-5">
+        <section id="oportunidades" className="relative isolate w-full pt-10 md:pt-16 pb-16">
+ 
+            <div className="absolute inset-0 -z-10 pointer-events-none bg-linear-to-r from-blue-50 via-transparent to-transparent" />
+ 
+            <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
+ 
+                {/* Cabeçalho da lista: título + quantidade de resultados (útil quando os filtros entrarem) */}
+                <header className="flex flex-wrap items-baseline justify-between gap-2 mb-6 md:mb-8">
+                    <h2 className="text-2xl md:text-3xl font-bold text-ink">
+                        {title}
+                    </h2>
+ 
+                    <p className="text-sm text-ink/70" aria-live="polite">
+                        {predios.length} {predios.length === 1 ? "imóvel" : "imóveis"}
+                    </p>
+                </header>
+ 
+                {predios.length > 0 ? (
+                    // 2 columns on mobile, 3 on tablet, 5 on desktop. Page scroll is vertical only.
+                    <div
+                        key={predios.map(p => p.name).join("|")} 
+                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-5">
                         {predios.map((predio, index) => (
-                            <BuildingCard
+                            <CardsList
                                 key={index}
                                 name={predio.name}
                                 img={predio.img}
@@ -86,15 +49,22 @@ function AptoList({title, predios}: AptoListProps) {
                                 location={predio.location}
                             />
                         ))}
-
-                        <div className="w-1 md:w-1 shrink-0"></div>
-
                     </div>
-                </div>
-
+                ) : (
+                    // Estado vazio: aparece quando os filtros não retornam nada
+                    <div className="py-20 text-center">
+                        <p className="text-lg font-bold text-ink">
+                            Nenhum imóvel encontrado
+                        </p>
+                        <p className="mt-1 text-sm text-ink/70">
+                            Tente mudar a busca, a metragem ou o preço.
+                        </p>
+                    </div>
+                )}
+ 
             </div>
-        </div>
+        </section>
     )
 }
-
+ 
 export default AptoList;

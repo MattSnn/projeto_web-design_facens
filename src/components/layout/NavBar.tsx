@@ -26,7 +26,7 @@ function NavBar({ setActivePage, LinkIDs }: NavBarProps) {
 
     return (
         <div>
-            <nav className="bg-white/95 w-full z-50 px-4 md:py-5 md:px-15 top-0 left-0 fixed flex items-center gap-3">
+            <nav className="bg-white/95 w-full z-50 px-4 md:py-5 md:px-15 top-0 left-0 fixed flex items-center gap-3 ">
                 <div className="font font-['Times_New_Roman'] flex-1 text-lg md:text-3xl">
                     <a href="#inicio" className="text-black">Imobi</a>
                     <a href="#inicio" className="text-brand-muted">Faces</a>

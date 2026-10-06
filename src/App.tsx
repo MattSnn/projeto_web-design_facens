@@ -32,7 +32,9 @@ function App() {
         LinkIDs={navBarLinks[activePage] ?? navBarLinks["initialPage"]}
         setActivePage={setActivePage}
       />
-      {PAGES[activePage] ?? PAGES["initialPage"]}
+      <div className="pt-20">
+        {PAGES[activePage] ?? PAGES["initialPage"]}
+      </div>
     </div>
   )
 }
