@@ -1,7 +1,8 @@
 import InitialPage from "./pages/InitialPage"
+import AptoPage from "./pages/AptoPage"
+import ImovelPage from "./pages/ImovelPage"
 import NavBar from "./components/layout/NavBar"
 import {useState} from "react"
-import AptoPage from "./pages/AptoPage"
 import type {ReactElement} from "react"
 
 const navBarLinks: Record<string, Array<{id: string, label: string}>> = {
@@ -15,12 +16,18 @@ const navBarLinks: Record<string, Array<{id: string, label: string}>> = {
     {id: "comprar", label: "Comprar"},
     {id: "contato", label: "contato"},
   ],
+  imovelPage: [
+    {id: "alugar", label: "Alugar"},
+    {id: "comprar", label: "Comprar"},
+    {id: "contato", label: "contato"},
+  ],
 }
 
 
 const PAGES: Record<string, ReactElement> = {
   initialPage: <InitialPage />,
-  todosOsApartamentos: <AptoPage />
+  todosOsApartamentos: <AptoPage />,
+  imovelPage: <ImovelPage />
 }
 
 function App() {

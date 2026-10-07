@@ -4,7 +4,6 @@ import Contact from "../components/sections/Contact"
 import AptoList from"../components/sections/AptoList"
 import prediosLista from"../data/prediosLista";
 import { useState } from "react";
-
 function AptoPage() {
 
     const [search, setSearch] = useState<string>("")
@@ -32,8 +31,6 @@ function AptoPage() {
             setPrice={setPriceSelected}
             setArea={setAreaSelected}
             />
-
-
             <div>
                 <AptoList title="Todos os Imóveis" predios={filteredPredios}/>
             </div>
