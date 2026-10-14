@@ -3,13 +3,18 @@ import CardsCarousel from "../components/sections/CardsCarousel"
 import Hero from "../components/sections/Hero"
 import Contact from "../components/sections/Contact"
 import DataInfo from "../components/sections/DataInfo"
+import type { Predio } from "../data/prediosLista"
 
-function InitialPage() {
+interface InitialPageProps {
+  setImovelEscolhido: (imovel: Predio | null) => void
+}
+
+function InitialPage({ setImovelEscolhido }: InitialPageProps) {
 
   return (
     <div>
       <Hero />
-      <CardsCarousel />
+      <CardsCarousel setImovelEscolhido={setImovelEscolhido} />
       <DataInfo />
       <Contact />
       <Footer />

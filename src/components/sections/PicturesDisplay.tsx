@@ -1,11 +1,16 @@
-import foto1 from "../assets/casa-card-1.jpg"
-// interface PicturesDisplayProps {
-//     pictures: string[];
-// }
+import foto1 from "../assets/predio-1.jpg"
 
-function PicturesDisplay() {
+interface PicturesDisplayProps {
+    // pictures: [];
+    nome: string;
+}
+
+function PicturesDisplay({  nome }: PicturesDisplayProps) {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 p-5 md:h-120">
+            <h1 className="col-span-1 md:col-span-2 text-2xl font-bold mb-4">
+                {nome}
+            </h1>
             <button
                 className="group relative h-64 md:h-full w-full overflow-hidden rounded-lg text-white"
                 onClick={() => alert("Ver mais fotos")}

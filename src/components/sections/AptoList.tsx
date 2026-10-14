@@ -1,20 +1,14 @@
 import CardsList from "../ui/CardsList";
-
-type Predio = {
-    name: string;
-    img: string;
-    info: string;
-    area: string;
-    location: string;
-};
+import type { Predio } from "../../data/prediosLista";
  
-type AptoListProps = {
+interface AptoListProps {
     title: string;
     predios: Predio[];
+    setImovelEscolhido: (imovel: Predio) => void;
 };
  
  
-function AptoList({ title, predios }: AptoListProps) {
+function AptoList({ title, predios, setImovelEscolhido }: AptoListProps) {
 
     return (
         <section id="oportunidades" className="relative isolate w-full pt-10 md:pt-16 pb-16">
@@ -42,11 +36,8 @@ function AptoList({ title, predios }: AptoListProps) {
                         {predios.map((predio, index) => (
                             <CardsList
                                 key={index}
-                                name={predio.name}
-                                img={predio.img}
-                                info={predio.info}
-                                area={predio.area}
-                                location={predio.location}
+                                predio={predio}
+                                setImovelEscolhido={setImovelEscolhido}
                             />
                         ))}
                     </div>

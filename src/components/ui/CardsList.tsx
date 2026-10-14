@@ -1,12 +1,11 @@
+import type { Predio } from "../../data/prediosLista"
+
 interface CardsListProps {
-    name: string
-    img: string
-    info: string
-    location: string
-    area: string
+    predio: Predio;
+    setImovelEscolhido: (imovel: Predio) => void;
 }
 
-function CardsList({ name, img, info, location, area }: CardsListProps) {
+function CardsList({ predio, setImovelEscolhido }: CardsListProps) {
     return (
         
         <article
@@ -16,8 +15,8 @@ function CardsList({ name, img, info, location, area }: CardsListProps) {
             starting:opacity-0 starting:translate-y-4 transition duration-500 ease-out motion-reduce:transition-none">
 
             <img
-                src={img}
-                alt={`Foto do ${name}`}
+                src={predio.mainImg}
+                alt={`Foto do ${predio.name}`}
                 loading="lazy"
                 className=" absolute inset-0 h-full w-full object-cover transition-transform 
                 duration-700 group-hover:scale-105 group-focus-within:scale-105 motion-reduce:transition-none"/>
@@ -45,7 +44,7 @@ function CardsList({ name, img, info, location, area }: CardsListProps) {
 
                 {/* Nome */}
                 <h2 className="text-sm md:text-base font-bold text-ink mb-3 leading-tight line-clamp-1">
-                    {name}
+                    {predio.name}
                 </h2>
 
                 <div className="opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100">
@@ -58,7 +57,7 @@ function CardsList({ name, img, info, location, area }: CardsListProps) {
                                 🛏
                             </span>
 
-                            <span>{info}</span>
+                            <span>{predio.info}</span>
                         </div>
 
                         {/* Área */}
@@ -67,7 +66,7 @@ function CardsList({ name, img, info, location, area }: CardsListProps) {
                                 ◎
                             </span>
 
-                            <span>{area}</span>
+                            <span>{predio.area}</span>
                         </div>
 
                         {/* Localização */}
@@ -76,7 +75,7 @@ function CardsList({ name, img, info, location, area }: CardsListProps) {
                                 ♧
                             </span>
 
-                            <span>{location}</span>
+                            <span>{predio.location}</span>
                         </div>
 
                         {/* Botão */}
@@ -97,6 +96,7 @@ function CardsList({ name, img, info, location, area }: CardsListProps) {
                                 font-bold
                                 gap-1.5
                             "
+                            onClick={() => setImovelEscolhido(predio)}
                         >
                             <span>Conheça</span>
                             <span

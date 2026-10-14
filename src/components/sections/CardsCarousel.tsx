@@ -1,67 +1,12 @@
 import BuildingCard from "../ui/BuildingCard";
-import predio1 from "../assets/predio-1.jpg"
 import { useRef } from "react";
+import { prediosLista } from "../../data/prediosLista";
+import type { Predio } from "../../data/prediosLista";
 
-const predios = [
-    {
-        name: "Boa Vista Towers",
-        img: predio1,
-        info: "2 ou 3 dorms",
-        area: "43 a 85 m²",
-        location: "Alto da Boa Vista",
-    },
-    {
-        name: "Horizonte Moema",
-        img: predio1,
-        info: "3 a 4 dorms (2 suítes)",
-        area: "120 a 240 m²",
-        location: "Moema",
-    },
-    {
-        name: "Vila Madalena",
-        img: predio1,
-        info: "Studio e 1 dorm",
-        area: "35 a 55 m²",
-        location: "Vila Madalena",
-    },
-    {
-        name: "Jardins Prime",
-        img: predio1,
-        info: "4 dorms (4 suítes)",
-        area: "200 a 420 m²",
-        location: "Jardim Paulista",
-    },
-    {
-        name: "Pinheiros Design",
-        img: predio1,
-        info: "1 a 3 dorms",
-        area: "50 a 110 m²",
-        location: "Pinheiros",
-    },
-    {
-        name: "Urban Tatuapé",
-        img: predio1,
-        info: "2 dorms (1 suíte)",
-        area: "65 a 90 m²",
-        location: "Tatuapé",
-    },
-    {
-        name: "Terraço Ibirapuera",
-        img: predio1,
-        info: "3 dorms (1 a 3 suítes)",
-        area: "140 a 300 m²",
-        location: "Vila Mariana",
-    },
-    {
-        name: "Oásis Brooklin",
-        img: predio1,
-        info: "1 ou 2 dorms",
-        area: "45 a 75 m²",
-        location: "Brooklin",
-    },
-]
-
-function CardsCarrosel() {
+interface CardsCarroselProps {
+    setImovelEscolhido: (imovel: Predio | null) => void
+}
+function CardsCarrosel({ setImovelEscolhido }: CardsCarroselProps) {
     const carouselRef = useRef<HTMLDivElement>(null)
 
     function scrollRight() {
@@ -122,14 +67,11 @@ function CardsCarrosel() {
                     className="flex-1 overflow-hidden max-w-full">
 
                     <div className="flex gap-3 md:gap-5">
-                        {predios.map((predio, index) => (
+                        {prediosLista.map((predio, index) => (
                             <BuildingCard
                                 key={index}
-                                name={predio.name}
-                                img={predio.img}
-                                info={predio.info}
-                                area={predio.area}
-                                location={predio.location}
+                                predio={predio}
+                                setImovelEscolhido={setImovelEscolhido}
                             />
                         ))}
 

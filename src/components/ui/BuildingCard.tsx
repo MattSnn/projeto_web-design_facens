@@ -1,18 +1,17 @@
+import type { Predio } from "../../data/prediosLista"
+
 interface BuildingCardProps {
-    name: string
-    img: string
-    info: string
-    location: string
-    area: string
+    setImovelEscolhido: (imovel: Predio | null) => void
+    predio: Predio
 }
 
-function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
+function BuildingCard({ setImovelEscolhido, predio }: BuildingCardProps) {
     return (
         <div className="relative h-55 md:h-80 w-42 md:w-85 shrink-0 group m-1">
 
             <img
-                src={img}
-                alt={`Foto do ${name}`}
+                src={predio.mainImg}
+                alt={`Foto do ${predio.name}`}
                 className="
                     absolute
                     inset-0
@@ -42,7 +41,7 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
 
                 {/* Nome */}
                 <h2 className="text-md font-bold md:text-xl text-ink mb-4">
-                    {name}
+                    {predio.name}
                 </h2>
                 <div className="opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     {/* Informações */}
@@ -54,7 +53,7 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                                 🛏
                             </span>
 
-                            <span>{info}</span>
+                            <span>{predio.info}</span>
                         </div>
 
                         {/* Área */}
@@ -63,7 +62,7 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                                 ◎
                             </span>
 
-                            <span>{area}</span>
+                            <span>{predio.area}</span>
                         </div>
 
                         {/* Localização */}
@@ -72,7 +71,7 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                                 ♧
                             </span>
 
-                            <span>{location}</span>
+                            <span>{predio.location}</span>
                         </div>
 
                         {/* Botão */}
@@ -90,8 +89,10 @@ function BuildingCard({ name, img, info, location, area }: BuildingCardProps) {
                          items-center 
                          justify-center 
                          font-bold 
-                         gap-1.5">
-                            
+                         gap-1.5"
+                            onClick={() => { setImovelEscolhido(predio) }}
+                        >
+
                             <span>Conheça</span>
                             <span className="
                             inline-flex

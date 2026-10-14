@@ -2,9 +2,14 @@ import Footer from "../components/layout/Footer"
 import FilterBar from "../components/layout/FilterBar"
 import Contact from "../components/sections/Contact"
 import AptoList from"../components/sections/AptoList"
-import prediosLista from"../data/prediosLista";
+import prediosLista, { type Predio } from"../data/prediosLista";
 import { useState } from "react";
-function AptoPage() {
+
+interface AptoPageProps {
+    setImovelEscolhido: (imovel: Predio) => void;
+}
+
+function AptoPage({ setImovelEscolhido }: AptoPageProps) {
 
     const [search, setSearch] = useState<string>("")
     const [priceSelected, setPriceSelected] = useState<string>("")
@@ -32,7 +37,7 @@ function AptoPage() {
             setArea={setAreaSelected}
             />
             <div>
-                <AptoList title="Todos os Imóveis" predios={filteredPredios}/>
+                <AptoList title="Todos os Imóveis" predios={filteredPredios} setImovelEscolhido={setImovelEscolhido} />
             </div>
 
 
@@ -41,10 +46,6 @@ function AptoPage() {
         </div>
     )
 }
-
-
-
-
 
 
 export default AptoPage

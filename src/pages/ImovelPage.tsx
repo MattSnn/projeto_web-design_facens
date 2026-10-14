@@ -1,9 +1,15 @@
 import Footer from "../components/layout/Footer"
 import PicturesDisplay from "../components/sections/PicturesDisplay"
-function ImovelPage() {
+import type { Predio } from "../data/prediosLista"
+
+interface ImovelPageProps {
+    predio: Predio | null
+}
+
+function ImovelPage({ predio }: ImovelPageProps) {
     return (
         <div>
-            <PicturesDisplay />
+            <PicturesDisplay nome={predio?.name || ""} />
             <Footer />
         </div>
     )
