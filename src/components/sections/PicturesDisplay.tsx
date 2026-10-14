@@ -1,18 +1,14 @@
 import foto1 from "../assets/predio-1.jpg"
 
-interface PicturesDisplayProps {
+// interface PicturesDisplayProps {
     // pictures: [];
-    nome: string;
-}
+// }
 
-function PicturesDisplay({  nome }: PicturesDisplayProps) {
+function PicturesDisplay() {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 p-5 md:h-120">
-            <h1 className="col-span-1 md:col-span-2 text-2xl font-bold mb-4">
-                {nome}
-            </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-52 md:h-96">
             <button
-                className="group relative h-64 md:h-full w-full overflow-hidden rounded-lg text-white"
+                className="group relative h-64 md:h-full w-full overflow-hidden rounded-2xl text-white"
                 onClick={() => alert("Ver mais fotos")}
             >
                 <img
@@ -22,30 +18,30 @@ function PicturesDisplay({  nome }: PicturesDisplayProps) {
                 />
             </button>
 
-            <div className="grid grid-cols-2 grid-rows-2 gap-2 h-64 md:h-full">
+            <div className="grid grid-cols-2 grid-rows-2 gap-3 h-52 md:h-96">
                 <button
-                    className="group relative h-full w-full overflow-hidden rounded-lg text-white"
+                    className="group relative h-full w-full overflow-hidden rounded-2xl text-white"
                     onClick={() => alert("Ver mais fotos")}
                 >
                     <img src={foto1} alt="Picture 1" className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
                 </button>
 
                 <button
-                    className="group relative h-full w-full overflow-hidden rounded-lg text-white"
+                    className="group relative h-full w-full overflow-hidden rounded-2xl text-white"
                     onClick={() => alert("Ver mais fotos")}
                 >
                     <img src={foto1} alt="Picture 2" className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
                 </button>
 
                 <button
-                    className="group relative h-full w-full overflow-hidden rounded-lg text-white"
+                    className="group relative h-full w-full overflow-hidden rounded-2xl text-white"
                     onClick={() => alert("Ver mais fotos")}
                 >
                     <img src={foto1} alt="Picture 3" className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
                 </button>
 
                 <button
-                    className="group relative h-full w-full overflow-hidden rounded-lg text-white"
+                    className="group relative h-full w-full overflow-hidden rounded-2xl text-white"
                     onClick={() => alert("Ver mais fotos")}
                 >
                     <img src={foto1} alt="Picture 4" className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />

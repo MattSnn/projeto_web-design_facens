@@ -13,7 +13,7 @@ function Footer() {
                             <div className="grid grid-cols-2 md:gap-x-5 max-w-xs text-xs">
                                 <h2>Mateus Sonnenberg</h2>
                                 <h2>Pedro Wagner</h2>
-                                <h2>Rodrigo Boava</h2>
+                                <h2>Rodrigo Vieira</h2>
                                 <h2>Jhonny Walter</h2>
                             </div>
                         </div>
