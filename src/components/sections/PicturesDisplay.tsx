@@ -6,7 +6,7 @@ import foto1 from "../assets/predio-1.jpg"
 
 function PicturesDisplay() {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-52 md:h-96">
+        <div id="fotos" className="grid grid-cols-1 md:grid-cols-2 gap-3 h-52 md:h-96">
             <button
                 className="group relative h-64 md:h-full w-full overflow-hidden rounded-2xl text-white"
                 onClick={() => alert("Ver mais fotos")}

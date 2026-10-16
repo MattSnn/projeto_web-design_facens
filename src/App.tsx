@@ -18,9 +18,11 @@ const navBarLinks: Record<string, Array<{ id: string, label: string }>> = {
     { id: "contato", label: "contato" },
   ],
   imovelPage: [
-    { id: "alugar", label: "Alugar" },
-    { id: "comprar", label: "Comprar" },
-    { id: "contato", label: "contato" },
+    { id: "fotos", label: "Fotos" },
+    { id: "sobre", label: "Sobre" },
+    { id: "calculadora", label: "Calculadora" },
+    { id: "localizacao", label: "Localização" },
+    { id: "planta", label: "Planta" },
   ],
 }
 
