@@ -5,6 +5,7 @@ import NavBar from "./components/layout/NavBar"
 import { useState } from "react"
 import type { ReactElement } from "react"
 import type { Predio } from "./data/prediosLista"
+import CalculatorPage from "./pages/CalculatorPage"
 
 const navBarLinks: Record<string, Array<{ id: string, label: string }>> = {
   initialPage: [
@@ -24,6 +25,9 @@ const navBarLinks: Record<string, Array<{ id: string, label: string }>> = {
     { id: "localizacao", label: "Localização" },
     { id: "planta", label: "Planta" },
   ],
+  CalculatorPage: [
+    { id: "fotos", label: "Fotos" },
+  ],
 }
 
 function App() {
@@ -40,7 +44,8 @@ function App() {
   const PAGES: Record<string, ReactElement> = {
     initialPage: <InitialPage setImovelEscolhido={navigateToImovelPage} />,
     todosOsApartamentos: <AptoPage setImovelEscolhido={navigateToImovelPage}/>,
-    imovelPage: <ImovelPage predio={imovelEscolhido} />
+    imovelPage: <ImovelPage predio={imovelEscolhido} />,
+    calculatorPage: <CalculatorPage />
   }
 
 

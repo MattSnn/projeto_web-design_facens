@@ -28,8 +28,8 @@ function NavBar({ setActivePage, LinkIDs }: NavBarProps) {
         <div>
             <nav className="bg-white/95 w-full z-50 px-4 md:py-5 md:px-15 top-0 left-0 fixed flex items-center gap-3 ">
                 <div className="font font-['Times_New_Roman'] flex-1 text-lg md:text-3xl">
-                    <a href="#inicio" className="text-black">Imobi</a>
-                    <a href="#inicio" className="text-brand-muted">Faces</a>
+                    <a href="#inicio" className="text-black" onClick={(e) => {setActivePage("initialPage"); e.preventDefault(); closeMenu()}}>Imobi</a>
+                    <a href="#inicio" className="text-brand-muted" onClick={(e) => {setActivePage("initialPage"); e.preventDefault(); closeMenu()}}>Faces</a>
                 </div>
                 <div className="hidden md:flex gap-4 lg:gap-6 text-sm font-bold text-[#55627a]">
                     {LinkIDs.map((link) => (
@@ -94,8 +94,8 @@ function NavBar({ setActivePage, LinkIDs }: NavBarProps) {
                     </span>
                     <a onClick={(e) => {setActivePage("initialPage"); e.preventDefault(); closeMenu()}} href="" className="text-lg hover:text-[#222833]">Página Inicial</a>
                     <a onClick={(e) => {setActivePage("todosOsApartamentos"); e.preventDefault(); closeMenu()}} href="" className="text-lg hover:text-[#222833]">Todos os apartamentos</a>
-                    <a href="#faq" className="text-lg hover:text-[#222833]">Perguntas frequentes</a>
-                    <a href="#carreiras" className="text-lg hover:text-[#222833]">Trabalhe conosco</a>
+                    <a onClick={(e) => {setActivePage("calculatorPage"); e.preventDefault(); closeMenu()}} href="" className="text-lg hover:text-[#222833]">Planeje o seu Investimento</a>
+                    <a href="" className="text-lg hover:text-[#222833]">Trabalhe conosco</a>
                 </div>
 
                 {/* CTA no fim da gaveta: só no celular */}
