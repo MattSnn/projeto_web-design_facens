@@ -30,7 +30,7 @@ const CARDS_INFO = [
 
 function DataInfo() {
     return (
-        <div className="relative isolate w-full px-8 py-16">
+        <div id="sobre-nos" className="relative isolate w-full px-8 py-16">
 
             <Separation/>
 

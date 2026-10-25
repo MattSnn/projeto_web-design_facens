@@ -48,7 +48,7 @@ function MainCalculator() {
                 </section>
 
                 {/* Abas + simulador */}
-                <section className="flex flex-col gap-5">
+                <section id="simuladores" className="flex flex-col gap-5">
                     <Segmented options={ABAS} value={aba} onChange={setAba} />
                     {aba === "financiamento" && <FinanciamentoPanel />}
                     {aba === "consorcio" && <ConsorcioPanel />}
@@ -57,7 +57,7 @@ function MainCalculator() {
                 </section>
 
                 {/* Comparativo */}
-                <section className="mt-16">
+                <section id="comparativo" className="mt-16">
                     <h2 className="mb-6 text-2xl md:text-3xl font-semibold tracking-tight text-brand-dark">
                         Financiamento ou consórcio?
                     </h2>
@@ -84,7 +84,7 @@ function MainCalculator() {
                 </section>
 
                 {/* Dicas */}
-                <section className="mt-16">
+                <section id="dicas" className="mt-16">
                     <h2 className="mb-6 text-2xl md:text-3xl font-semibold tracking-tight text-brand-dark">
                         Antes de decidir
                     </h2>

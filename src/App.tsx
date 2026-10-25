@@ -2,6 +2,7 @@ import InitialPage from "./pages/InitialPage"
 import AptoPage from "./pages/AptoPage"
 import ImovelPage from "./pages/ImovelPage"
 import NavBar from "./components/layout/NavBar"
+import type { NavLink } from "./components/layout/NavBar"
 import { useEffect, useState } from "react"
 import type { ReactElement } from "react"
 import prediosLista, { type Predio } from "./data/prediosLista"
@@ -9,26 +10,31 @@ import CalculatorPage from "./pages/CalculatorPage"
 import { buildUrl, getParam, PAGE_TITLES, readRoute } from "./utils/navigation"
 import type { Navigate, PageId, Route } from "./utils/navigation"
 
-const navBarLinks: Record<string, Array<{ id: string, label: string }>> = {
+const navBarLinks: Record<PageId, NavLink[]> = {
   initialPage: [
     { id: "inicio", label: "Início" },
-    { id: "oportunidades", label: "Oportunidades" },
-    { id: "contato", label: "contato" },
+    { id: "oportunidades", label: "Destaques" },
+    { id: "sobre-nos", label: "Sobre nós" },
+    { id: "contato", label: "Contato" },
   ],
   todosOsApartamentos: [
-    { id: "alugar", label: "Alugar" },
-    { id: "comprar", label: "Comprar" },
-    { id: "contato", label: "contato" },
+    { id: "todos", label: "Todos", page: "todosOsApartamentos" },
+    { id: "comprar", label: "Comprar", page: "todosOsApartamentos", params: { tipo: "venda" } },
+    { id: "alugar", label: "Alugar", page: "todosOsApartamentos", params: { tipo: "aluguel" } },
+    { id: "contato", label: "Contato" },
   ],
   imovelPage: [
     { id: "fotos", label: "Fotos" },
     { id: "sobre", label: "Sobre" },
-    { id: "calculadora", label: "Calculadora" },
     { id: "localizacao", label: "Localização" },
     { id: "planta", label: "Planta" },
+    { id: "contato", label: "Contato" },
   ],
-  CalculatorPage: [
-    { id: "fotos", label: "Fotos" },
+  calculatorPage: [
+    { id: "simuladores", label: "Simuladores" },
+    { id: "comparativo", label: "Comparativo" },
+    { id: "dicas", label: "Dicas" },
+    { id: "contato", label: "Contato" },
   ],
 }
 
@@ -87,10 +93,11 @@ function App() {
   return (
     <div>
       <NavBar
+        activePage={activePage}
         LinkIDs={navBarLinks[activePage] ?? navBarLinks["initialPage"]}
-        setActivePage={(page) => navigate(page)}
+        setActivePage={(page, params) => navigate(page, params)}
       />
-      <div className="pt-20">
+      <div className="pt-16 md:pt-20">
         {PAGES[activePage] ?? PAGES["initialPage"]}
       </div>
     </div>
