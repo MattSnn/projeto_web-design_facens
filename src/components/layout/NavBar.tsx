@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import type { PageId } from "../../utils/navigation";
 
 interface NavBarProps {
-    setActivePage: (page: string) => void
+    setActivePage: (page: PageId) => void
     LinkIDs: Array<{
         id: string;
         label: string;
