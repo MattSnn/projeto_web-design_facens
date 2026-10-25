@@ -22,7 +22,7 @@ function ImovelPage({ predio }: ImovelPageProps) {
     return (
         <div className="bg-slate-50 min-h-[calc(100vh-5rem)] flex flex-col">
             <main className="flex-col gap-20 w-full max-w-screen-2xl mx-auto px-4 md:px-15 pb-10">
-                <PicturesDisplay />
+                <PicturesDisplay pictures={predio.images} name={predio.name} />
                 <ImovelDetails predio={predio} />
             </main>
             <Footer />
