@@ -16,7 +16,7 @@ function InitialPage({ setImovelEscolhido, navigate }: InitialPageProps) {
   return (
     <div>
       <Hero navigate={navigate} />
-      <CardsCarousel setImovelEscolhido={setImovelEscolhido} />
+      <CardsCarousel setImovelEscolhido={setImovelEscolhido} onVerTodos={() => navigate("todosOsApartamentos")} />
       <DataInfo />
       <Contact />
       <Footer />

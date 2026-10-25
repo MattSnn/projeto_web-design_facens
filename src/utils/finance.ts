@@ -29,3 +29,8 @@ export function simulaSac(financiado: number, anual: number, meses: number) {
     }
 }
 
+
+// preço como aparece nos cards: aluguel ganha o "/mês"
+export function formatPreco(price: number, status: "À venda" | "Aluguel"): string {
+    return status === "Aluguel" ? `${brl.format(price)}/mês` : brl.format(price)
+}

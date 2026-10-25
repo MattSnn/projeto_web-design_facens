@@ -29,13 +29,13 @@ function AptoList({ title, predios, setImovelEscolhido }: AptoListProps) {
                 </header>
  
                 {predios.length > 0 ? (
-                    // 2 columns on mobile, 3 on tablet, 5 on desktop. Page scroll is vertical only.
+                    // 1 coluna no celular, 2 no tablet, 3-4 no desktop
                     <div
-                        key={predios.map(p => p.name).join("|")} 
-                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-5">
-                        {predios.map((predio, index) => (
+                        key={predios.map(p => p.id).join("|")}
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6">
+                        {predios.map((predio) => (
                             <CardsList
-                                key={index}
+                                key={predio.id}
                                 predio={predio}
                                 setImovelEscolhido={setImovelEscolhido}
                             />
