@@ -86,7 +86,7 @@ function App() {
   const PAGES: Record<PageId, ReactElement> = {
     initialPage: <InitialPage setImovelEscolhido={navigateToImovelPage} navigate={navigate} />,
     todosOsApartamentos: <AptoPage key={route.search} setImovelEscolhido={navigateToImovelPage} search={route.search} />,
-    imovelPage: <ImovelPage predio={imovelEscolhido} />,
+    imovelPage: <ImovelPage predio={imovelEscolhido} navigate={navigate} setImovelEscolhido={navigateToImovelPage} />,
     calculatorPage: <CalculatorPage />
   }
 
