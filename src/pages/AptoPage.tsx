@@ -1,45 +1,104 @@
 import Footer from "../components/layout/Footer"
 import FilterBar from "../components/layout/FilterBar"
+import { FILTROS_VAZIOS } from "../utils/filtros"
+import type { Filtros, Ordem, Tipo } from "../utils/filtros"
 import Contact from "../components/sections/Contact"
-import AptoList from"../components/sections/AptoList"
-import prediosLista, { type Predio } from"../data/prediosLista";
-import { useState } from "react";
+import AptoList from "../components/sections/AptoList"
+import prediosLista, { type Predio } from "../data/prediosLista";
+import { useEffect, useState } from "react";
+import { getParam } from "../utils/navigation";
 
 interface AptoPageProps {
     setImovelEscolhido: (imovel: Predio) => void;
+    search: string;
 }
 
-function AptoPage({ setImovelEscolhido }: AptoPageProps) {
+// "São Paulo" e "sao paulo" viram a mesma coisa na busca
+const normalizar = (texto: string) => texto.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
 
-    const [search, setSearch] = useState<string>("")
-    const [priceSelected, setPriceSelected] = useState<string>("")
-    const [areaSelected, setAreaSelected] = useState<string>("")
+function filtrosDaUrl(search: string): Filtros {
+    const tipo = getParam(search, "tipo")
+    return {
+        ...FILTROS_VAZIOS,
+        busca: getParam(search, "busca"),
+        tipo: (tipo === "venda" || tipo === "aluguel" ? tipo : "") as Tipo,
+        quartos: Number(getParam(search, "quartos")) || 0,
+        precoMax: Number(getParam(search, "precoMax")) || 0,
+        area: getParam(search, "area"),
+        ordem: (getParam(search, "ordem") || "relevancia") as Ordem,
+    }
+}
+
+const TITULOS: Record<Tipo, string> = {
+    "": "Todos os imóveis",
+    venda: "Imóveis à venda",
+    aluguel: "Imóveis para alugar",
+}
+
+function AptoPage({ setImovelEscolhido, search }: AptoPageProps) {
+
+    const [filtros, setFiltros] = useState<Filtros>(() => filtrosDaUrl(search))
+
+    // mantém os filtros na URL (sem criar histórico), assim dá para compartilhar a busca
+    useEffect(() => {
+        const query = new URLSearchParams({ pagina: "imoveis" })
+        for (const [key, value] of Object.entries(filtros)) {
+            if (value && !(key === "ordem" && value === "relevancia")) query.set(key, String(value))
+        }
+        window.history.replaceState(null, "", `${window.location.pathname}?${query.toString()}`)
+    }, [filtros])
+
+    const area = (predio: Predio) => parseInt(predio.area)
 
     const filteredPredios = prediosLista.filter(predio => {
-        const matchesSearch = predio.name.toLowerCase().includes(search.toLowerCase());
-        const matchesPrice = priceSelected === "" || 
-            (priceSelected === "<500000" && predio.price < 500000) ||
-            (priceSelected === "500000-1000000" && predio.price >= 500000 && predio.price <= 1000000) ||
-            (priceSelected === ">1000000" && predio.price > 1000000);
-        const matchesArea = areaSelected === "" || 
-            (areaSelected === "<50" && parseInt(predio.area) < 50) ||
-            (areaSelected === "50-100" && parseInt(predio.area) >= 50 && parseInt(predio.area) <= 100) ||
-            (areaSelected === ">100" && parseInt(predio.area) > 100);
-        return matchesSearch && matchesPrice && matchesArea;
+        const texto = normalizar(`${predio.name} ${predio.neighborhood} ${predio.location}`)
+        const matchesSearch = normalizar(filtros.busca).split(/\s+/).every((palavra) => texto.includes(palavra));
+        const matchesTipo = filtros.tipo === "" ||
+            (filtros.tipo === "venda" && predio.status === "À venda") ||
+            (filtros.tipo === "aluguel" && predio.status === "Aluguel");
+        const matchesPrice = filtros.precoMax === 0 || predio.price <= filtros.precoMax;
+        const matchesQuartos = predio.bedrooms >= filtros.quartos;
+        const matchesArea = filtros.area === "" ||
+            (filtros.area === "<50" && area(predio) < 50) ||
+            (filtros.area === "50-100" && area(predio) >= 50 && area(predio) <= 100) ||
+            (filtros.area === ">100" && area(predio) > 100);
+        return matchesSearch && matchesTipo && matchesPrice && matchesQuartos && matchesArea;
     }
-    );
+    ).sort((a, b) => {
+        if (filtros.ordem === "menor-preco") return a.price - b.price
+        if (filtros.ordem === "maior-preco") return b.price - a.price
+        if (filtros.ordem === "maior-area") return area(b) - area(a)
+        return 0
+    });
 
     return (
-        <div>
-            <FilterBar 
-            setSearch={setSearch}
-            setPrice={setPriceSelected}
-            setArea={setAreaSelected}
+        <div className="bg-slate-50">
+            {/* Cabeçalho da página */}
+            <header className="relative overflow-hidden bg-brand-dark px-4 md:px-8 pt-12 pb-20 md:pt-16 md:pb-24 text-white">
+                <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-muted/40 blur-3xl" />
+                <div className="pointer-events-none absolute -left-20 bottom-0 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
+                <div className="relative mx-auto max-w-screen-2xl">
+                    <p className="text-xs font-bold uppercase tracking-widest text-accent">Catálogo ImobiFaces</p>
+                    <h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight">Encontre seu próximo endereço</h1>
+                    <p className="mt-3 max-w-xl text-brand-light/80">
+                        Filtre por tipo, quartos, metragem e preço. Todos os anúncios são verificados pela nossa equipe.
+                    </p>
+                </div>
+            </header>
+
+            <FilterBar
+                filtros={filtros}
+                setFiltros={setFiltros}
+                total={filteredPredios.length}
             />
             <div>
-                <AptoList title="Todos os Imóveis" predios={filteredPredios} setImovelEscolhido={setImovelEscolhido} />
+                <AptoList
+                    title={TITULOS[filtros.tipo]}
+                    predios={filteredPredios}
+                    setImovelEscolhido={setImovelEscolhido}
+                    onLimpar={() => setFiltros(FILTROS_VAZIOS)}
+                />
             </div>
-
 
             <Contact />
             <Footer />
