@@ -92,7 +92,7 @@ function App() {
     initialPage: <InitialPage setImovelEscolhido={navigateToImovelPage} navigate={navigate} />,
     todosOsApartamentos: <AptoPage key={route.search} setImovelEscolhido={navigateToImovelPage} search={route.search} />,
     imovelPage: <ImovelPage predio={imovelEscolhido} navigate={navigate} setImovelEscolhido={navigateToImovelPage} />,
-    calculatorPage: <CalculatorPage />,
+    calculatorPage: <CalculatorPage navigate={navigate} />,
     trabalheConosco: <TrabalheConoscoPage />,
   }
 

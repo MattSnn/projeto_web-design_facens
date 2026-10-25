@@ -4,7 +4,11 @@ import NumberField from "../ui/NumberField"
 import Panel from "../ui/Panel"
 import ResultCard from "../ui/ResultCard"
 
-function AluguelPanel() {
+interface AluguelPanelProps {
+    onVerImoveis?: (aluguelMaximo: number) => void
+}
+
+function AluguelPanel({ onVerImoveis }: AluguelPanelProps) {
     const [aluguel, setAluguel] = useState(2500)
     const [condominio, setCondominio] = useState(600)
     const [iptu, setIptu] = useState(900)
@@ -27,6 +31,7 @@ function AluguelPanel() {
                     ]}
                     note="Estimativa. O reajuste segue o índice previsto em contrato e as exigências variam por imobiliária."
                     cta="Ver imóveis para alugar"
+                    onCta={onVerImoveis && (() => onVerImoveis(aluguel))}
                 />
             }
         >

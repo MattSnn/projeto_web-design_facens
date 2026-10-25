@@ -8,7 +8,11 @@ import { inputCls } from "../../utils/finance"
 import Segmented from "../ui/Segmented"
 
 
-function FinanciamentoPanel() {
+interface FinanciamentoPanelProps {
+    onVerImoveis?: (valorMaximo: number) => void
+}
+
+function FinanciamentoPanel({ onVerImoveis }: FinanciamentoPanelProps) {
     const [valor, setValor] = useState(450000)
     const [entradaPct, setEntradaPct] = useState(20)
     const [anos, setAnos] = useState(30)
@@ -43,6 +47,7 @@ function FinanciamentoPanel() {
                     ]}
                     note="Valores aproximados, sem seguros e taxas do banco. A parcela real depende da análise de crédito."
                     cta="Ver imóveis para esse valor"
+                    onCta={onVerImoveis && (() => onVerImoveis(valor))}
                 />
             }
         >

@@ -6,11 +6,14 @@ interface ResultCardProps {
     rows: { label: string; value: string }[]
     note: string
     cta: string
+    // sem onCta o botão leva ao formulário de contato
+    onCta?: () => void
 }
 
-function ResultCard({ label, value, suffix, bar, rows, note, cta }: ResultCardProps) {
+function ResultCard({ label, value, suffix, bar, rows, note, cta, onCta }: ResultCardProps) {
     return (
-        <aside className="flex flex-col gap-5 rounded-3xl bg-brand-dark p-6 md:p-9 text-white">
+        <aside className="relative isolate flex flex-col gap-5 overflow-hidden rounded-3xl bg-brand-dark p-6 md:p-9 text-white shadow-xl shadow-brand-dark/20">
+            <div className="pointer-events-none absolute -right-16 -top-16 -z-10 h-56 w-56 rounded-full bg-brand-muted/40 blur-3xl" />
             <p className="text-xs uppercase tracking-widest text-slate-300">{label}</p>
             <p className="text-4xl md:text-5xl font-bold tracking-tight">
                 {value}
@@ -41,9 +44,15 @@ function ResultCard({ label, value, suffix, bar, rows, note, cta }: ResultCardPr
  
             <a
                 href="#contato"
-                className="mt-auto flex h-12 items-center justify-center rounded-full bg-white font-bold text-brand-dark hover:bg-slate-100 transition"
+                onClick={(e) => {
+                    if (onCta) {
+                        e.preventDefault()
+                        onCta()
+                    }
+                }}
+                className="mt-auto flex h-12 items-center justify-center rounded-full bg-accent font-bold text-on-accent hover:bg-accent-hover transition"
             >
-                {cta}
+                {cta} →
             </a>
             <p className="text-xs text-slate-400">{note}</p>
         </aside>

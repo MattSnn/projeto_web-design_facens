@@ -4,6 +4,7 @@ import FinanciamentoPanel from "./FinanciamentoPanel";
 import ConsorcioPanel from "./ConsorcioPanel";
 import AnunciarPanel from "./AnunciarPanel";
 import AluguelPanel from "./AluguelPanel";
+import type { Navigate } from "../../utils/navigation";
 
 type Aba = "financiamento" | "consorcio" | "aluguel" | "anunciar"
 
@@ -27,32 +28,40 @@ const DICAS = [
     { titulo: "Documentos prontos", texto: "RG, CPF, comprovante de renda e de residência. Ter tudo em mãos acelera a aprovação." },
 ]
 
-function MainCalculator() {
+interface MainCalculatorProps {
+    navigate: Navigate
+}
+
+function MainCalculator({ navigate }: MainCalculatorProps) {
     const [aba, setAba] = useState<Aba>("financiamento")
 
     return (
         <div className="bg-slate-50">
-            <div className="max-w-7xl mx-auto px-4 md:px-15 pb-16">
-
-                {/* Hero */}
-                <section className="pt-10 md:pt-14 pb-8">
-                    <p className="text-xs font-bold uppercase tracking-widest text-blue-600">
+            {/* Hero */}
+            <section className="relative isolate overflow-hidden bg-brand-dark px-4 md:px-15 pt-12 pb-24 md:pt-16 md:pb-32 text-white">
+                <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-80 w-80 rounded-full bg-brand-muted/40 blur-3xl" />
+                <div className="pointer-events-none absolute left-1/3 bottom-0 -z-10 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
+                <div className="max-w-7xl mx-auto">
+                    <p className="text-xs font-bold uppercase tracking-widest text-accent">
                         Financiamento, consórcio e aluguel
                     </p>
-                    <h1 className="mt-3 max-w-3xl text-3xl md:text-5xl font-bold tracking-tight text-brand-dark">
-                        Descubra quanto cabe no seu bolso antes de escolher o imóvel
+                    <h1 className="mt-3 max-w-3xl text-3xl md:text-5xl font-bold tracking-tight">
+                        Descubra quanto cabe no seu bolso <span className="font-display italic font-medium text-accent">antes</span> de escolher o imóvel
                     </h1>
-                    <p className="mt-4 max-w-2xl text-base md:text-lg text-slate-500">
+                    <p className="mt-4 max-w-2xl text-base md:text-lg text-brand-light/75">
                         Simule na hora, compare os caminhos e fale com um especialista quando estiver pronto.
                     </p>
-                </section>
+                </div>
+            </section>
+
+            <div className="relative max-w-7xl mx-auto px-4 md:px-15 pb-16 -mt-16 md:-mt-20">
 
                 {/* Abas + simulador */}
                 <section id="simuladores" className="flex flex-col gap-5">
                     <Segmented options={ABAS} value={aba} onChange={setAba} />
-                    {aba === "financiamento" && <FinanciamentoPanel />}
+                    {aba === "financiamento" && <FinanciamentoPanel onVerImoveis={(valor) => navigate("todosOsApartamentos", { tipo: "venda", precoMax: valor })} />}
                     {aba === "consorcio" && <ConsorcioPanel />}
-                    {aba === "aluguel" && <AluguelPanel />}
+                    {aba === "aluguel" && <AluguelPanel onVerImoveis={(valor) => navigate("todosOsApartamentos", { tipo: "aluguel", precoMax: valor })} />}
                     {aba === "anunciar" && <AnunciarPanel />}
                 </section>
 
@@ -63,7 +72,7 @@ function MainCalculator() {
                     </h2>
                     <div className="overflow-x-auto rounded-3xl border border-slate-200 bg-white">
                         <table className="w-full min-w-xl text-left">
-                            <thead className="bg-slate-100 text-sm text-blue-700">
+                            <thead className="bg-brand-dark text-sm text-white">
                                 <tr>
                                     <th className="p-5 w-1/4"></th>
                                     <th className="p-5">Financiamento</th>
@@ -90,7 +99,7 @@ function MainCalculator() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {DICAS.map((dica) => (
-                            <article key={dica.titulo} className="rounded-2xl border border-slate-200 bg-white p-6">
+                            <article key={dica.titulo} className="rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-lg">
                                 <h3 className="font-semibold text-brand-dark">{dica.titulo}</h3>
                                 <p className="mt-2 text-sm leading-relaxed text-slate-500">{dica.texto}</p>
                             </article>
@@ -99,7 +108,7 @@ function MainCalculator() {
                 </section>
 
                 {/* CTA final */}
-                <section className="mt-16 flex flex-col md:flex-row md:items-center gap-6 rounded-3xl bg-blue-600 p-8 md:p-12 text-white">
+                <section className="mt-16 flex flex-col md:flex-row md:items-center gap-6 rounded-3xl bg-linear-to-r from-brand-muted to-brand-border p-8 md:p-12 text-white shadow-xl shadow-brand-muted/20">
                     <div className="flex-1">
                         <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Ficou com dúvida nos números?</h2>
                         <p className="mt-2 text-blue-50">Um especialista ajuda você a escolher o melhor caminho, sem compromisso.</p>

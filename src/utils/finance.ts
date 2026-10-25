@@ -4,8 +4,7 @@ export const brl = new Intl.NumberFormat("pt-BR", {
     maximumFractionDigits: 0,
 })
  
-// "" ou texto inválido vira 0, assim a tela nunca mostra NaN
-export const inputCls ="h-12 w-full rounded-xl border border-slate-300 bg-white px-4 text-base text-brand-dark"
+export const inputCls = "h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-base font-medium text-brand-dark outline-none transition focus:border-brand-muted focus:bg-white focus:ring-4 focus:ring-brand-muted/15"
  
 // juros anuais -> juros mensais equivalentes
 const taxaMensal = (anual: number) => Math.pow(1 + anual / 100, 1 / 12) - 1

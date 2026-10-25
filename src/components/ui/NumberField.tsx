@@ -8,7 +8,8 @@ interface NumberFieldProps {
     step?: number
 }
 
-const num = (v: string) => Number(v) || 0
+// "" ou texto inválido vira 0 e negativos não entram
+const num = (v: string) => Math.max(Number(v) || 0, 0)
  
 function NumberField({ label, value, onChange, hint, step = 1 }: NumberFieldProps) {
     return (
@@ -16,6 +17,7 @@ function NumberField({ label, value, onChange, hint, step = 1 }: NumberFieldProp
             <input
                 type="number"
                 min={0}
+                inputMode="decimal"
                 step={step}
                 value={value}
                 onChange={(e) => onChange(num(e.target.value))}
