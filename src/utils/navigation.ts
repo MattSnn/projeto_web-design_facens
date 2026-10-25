@@ -1,7 +1,7 @@
 // Navegação simples baseada na URL (?pagina=...), sem biblioteca de rotas.
 // Assim o botão "voltar" do navegador, o F5 e links compartilhados funcionam.
 
-export type PageId = "initialPage" | "todosOsApartamentos" | "imovelPage" | "calculatorPage"
+export type PageId = "initialPage" | "todosOsApartamentos" | "imovelPage" | "calculatorPage" | "trabalheConosco"
 
 export type NavParams = Record<string, string | number | undefined>
 
@@ -12,6 +12,7 @@ const SLUGS: Record<PageId, string> = {
     todosOsApartamentos: "imoveis",
     imovelPage: "imovel",
     calculatorPage: "simulador",
+    trabalheConosco: "trabalhe-conosco",
 }
 
 export const PAGE_TITLES: Record<PageId, string> = {
@@ -19,6 +20,7 @@ export const PAGE_TITLES: Record<PageId, string> = {
     todosOsApartamentos: "Imóveis à venda e para alugar | ImobiFaces",
     imovelPage: "Imóvel | ImobiFaces",
     calculatorPage: "Simuladores de financiamento | ImobiFaces",
+    trabalheConosco: "Trabalhe conosco | ImobiFaces",
 }
 
 export interface Route {

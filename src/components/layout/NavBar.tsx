@@ -12,7 +12,7 @@ export interface NavLink {
 
 interface NavBarProps {
     activePage: PageId
-    setActivePage: (page: PageId, params?: NavParams) => void
+    setActivePage: (page: PageId, params?: NavParams, hash?: string) => void
     LinkIDs: NavLink[]
 }
 
@@ -20,6 +20,7 @@ const OUTRAS_PAGINAS: Array<{ page: PageId; label: string; desc: string }> = [
     { page: "initialPage", label: "Página Inicial", desc: "Destaques e novidades" },
     { page: "todosOsApartamentos", label: "Todos os imóveis", desc: "Compre ou alugue" },
     { page: "calculatorPage", label: "Planeje o seu Investimento", desc: "Simuladores de financiamento" },
+    { page: "trabalheConosco", label: "Trabalhe conosco", desc: "Vagas para corretores e equipe" },
 ]
 
 function NavBar({ activePage, setActivePage, LinkIDs }: NavBarProps) {
@@ -60,6 +61,15 @@ function NavBar({ activePage, setActivePage, LinkIDs }: NavBarProps) {
         setActivePage(page, params)
     }
 
+    // páginas sem a seção de contato mandam para o contato da página inicial
+    function irParaContato(e: MouseEvent) {
+        closeMenu()
+        if (!document.getElementById("contato")) {
+            e.preventDefault()
+            setActivePage("initialPage", undefined, "contato")
+        }
+    }
+
     function handleLink(e: MouseEvent, link: NavLink) {
         closeMenu()
         if (link.page) goTo(e, link.page, link.params)
@@ -96,6 +106,7 @@ function NavBar({ activePage, setActivePage, LinkIDs }: NavBarProps) {
                 <div className="hidden md:flex flex-1 justify-end">
                     <a
                         href="#contato"
+                        onClick={irParaContato}
                         className="bg-brand-muted font-bold text-white text-sm px-5 py-3 rounded-full whitespace-nowrap shadow-lg shadow-brand-muted/25 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300"
                     >
                         Falar com um especialista
@@ -174,7 +185,7 @@ function NavBar({ activePage, setActivePage, LinkIDs }: NavBarProps) {
                     <p className="mt-1 text-sm text-brand-light/80">Nossos corretores respondem em poucos minutos.</p>
                     <a
                         href="#contato"
-                        onClick={closeMenu}
+                        onClick={irParaContato}
                         className="mt-4 block rounded-full bg-accent px-4 py-3 text-center font-bold text-on-accent transition-colors hover:bg-accent-hover"
                     >
                         Falar com um especialista

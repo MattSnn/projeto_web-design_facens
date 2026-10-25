@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import type { ReactElement } from "react"
 import prediosLista, { type Predio } from "./data/prediosLista"
 import CalculatorPage from "./pages/CalculatorPage"
+import TrabalheConoscoPage from "./pages/TrabalheConoscoPage"
 import { buildUrl, getParam, PAGE_TITLES, readRoute } from "./utils/navigation"
 import type { Navigate, PageId, Route } from "./utils/navigation"
 
@@ -35,6 +36,10 @@ const navBarLinks: Record<PageId, NavLink[]> = {
     { id: "comparativo", label: "Comparativo" },
     { id: "dicas", label: "Dicas" },
     { id: "contato", label: "Contato" },
+  ],
+  trabalheConosco: [
+    { id: "vagas", label: "Vagas" },
+    { id: "candidatura", label: "Candidatura" },
   ],
 }
 
@@ -87,7 +92,8 @@ function App() {
     initialPage: <InitialPage setImovelEscolhido={navigateToImovelPage} navigate={navigate} />,
     todosOsApartamentos: <AptoPage key={route.search} setImovelEscolhido={navigateToImovelPage} search={route.search} />,
     imovelPage: <ImovelPage predio={imovelEscolhido} navigate={navigate} setImovelEscolhido={navigateToImovelPage} />,
-    calculatorPage: <CalculatorPage />
+    calculatorPage: <CalculatorPage />,
+    trabalheConosco: <TrabalheConoscoPage />,
   }
 
   return (
@@ -95,7 +101,7 @@ function App() {
       <NavBar
         activePage={activePage}
         LinkIDs={navBarLinks[activePage] ?? navBarLinks["initialPage"]}
-        setActivePage={(page, params) => navigate(page, params)}
+        setActivePage={navigate}
       />
       <div className="pt-16 md:pt-20">
         {PAGES[activePage] ?? PAGES["initialPage"]}
