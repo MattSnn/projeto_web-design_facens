@@ -1,6 +1,6 @@
 import InfoCard from "../ui/InfoCard";
 import casa1 from "../assets/casa-card-1.jpg"
-import Corretores from "../assets/corretor.png"
+import Corretores from "../assets/corretor.jpg"
 import Familias from "../assets/FamiliasAtendidas.jpg"
 import ImobiFaces from "../assets/ImobiFacens.jpg"
 import Separation
