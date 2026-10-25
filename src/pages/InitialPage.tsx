@@ -4,16 +4,18 @@ import Hero from "../components/sections/Hero"
 import Contact from "../components/sections/Contact"
 import DataInfo from "../components/sections/DataInfo"
 import type { Predio } from "../data/prediosLista"
+import type { Navigate } from "../utils/navigation"
 
 interface InitialPageProps {
   setImovelEscolhido: (imovel: Predio | null) => void
+  navigate: Navigate
 }
 
-function InitialPage({ setImovelEscolhido }: InitialPageProps) {
+function InitialPage({ setImovelEscolhido, navigate }: InitialPageProps) {
 
   return (
     <div>
-      <Hero />
+      <Hero navigate={navigate} />
       <CardsCarousel setImovelEscolhido={setImovelEscolhido} />
       <DataInfo />
       <Contact />
