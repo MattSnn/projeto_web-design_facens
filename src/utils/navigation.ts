@@ -48,3 +48,10 @@ export function buildUrl(page: PageId, params: NavParams = {}, hash?: string): s
 export function getParam(search: string, key: string): string {
     return new URLSearchParams(search).get(key) ?? ""
 }
+
+// Para componentes que não recebem o "navigate" por props (ex.: Footer):
+// troca a URL e avisa o App pelo mesmo evento do botão voltar.
+export function goTo(page: PageId, params?: NavParams, hash?: string) {
+    window.history.pushState(null, "", buildUrl(page, params, hash))
+    window.dispatchEvent(new PopStateEvent("popstate"))
+}

@@ -1,27 +1,29 @@
+import { useCountUp } from "../../hooks/useCountUp"
+
 interface InfoCardProps {
     name: string
-    value: string
+    value: number
+    suffix?: string
     image: string
 }
 
+function InfoCard({ name, value, suffix = "", image }: InfoCardProps) {
+    const { ref, valor } = useCountUp<HTMLDivElement>(value)
 
-
-function InfoCard({ name, value, image }: InfoCardProps) {
     return (
         <div
-            className="relative w-full hover:scale-110 transition-all duration-600 w-max-80 h-48 overflow-hidden rounded-xl bg-cover bg-center shadow-lg"
-            style={{ backgroundImage: `url(${image})`, backgroundPosition: 'center' }}
+            ref={ref}
+            className="group relative w-full h-52 md:h-60 overflow-hidden rounded-3xl shadow-lg"
         >
-            <div className="absolute inset-0 bg-linear-to-tr from-blue-950 via-blue-950/70 to-transparent" />
+            <img src={image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-linear-to-t from-brand-full-dark via-brand-full-dark/60 to-brand-full-dark/10" />
 
-            <div className="absolute bottom-0 left-0 p-6 text-white">
-
-                <p className="mt-1 text-md font-bold text-blue-200">
-                    {name}
+            <div className="absolute bottom-0 left-0 p-5 md:p-6 text-white">
+                <p className="text-3xl md:text-5xl font-bold tracking-tight tabular-nums">
+                    {valor.toLocaleString("pt-BR")}{suffix}
                 </p>
-
-                <p className="mt-1 text-3xl font-bold">
-                    {value}
+                <p className="mt-1 text-sm md:text-base font-medium text-brand-light/85">
+                    {name}
                 </p>
             </div>
         </div>

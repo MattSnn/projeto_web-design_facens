@@ -3,60 +3,129 @@ import casa1 from "../assets/casa-card-1.jpg"
 import Corretores from "../assets/corretor.jpg"
 import Familias from "../assets/FamiliasAtendidas.jpg"
 import ImobiFaces from "../assets/ImobiFacens.jpg"
-import Separation
- from "../ui/Separation";
+import juliana from "../assets/clientes/juliana.jpg"
+import marcos from "../assets/clientes/marcos.jpg"
+import camila from "../assets/clientes/camila.jpg"
+import { CheckIcon } from "../ui/Icons";
+
 const CARDS_INFO = [
     {
-        name: "Imoveis Vendidos:",
-        value: "345.123",
+        name: "Imóveis vendidos",
+        value: 3450,
+        suffix: "+",
         image: casa1
     },
     {
-        name: "Famílias Atendidas",
-        value: "496.589",
+        name: "Famílias atendidas",
+        value: 5200,
+        suffix: "+",
         image: Familias
     },
     {
-        name: "Anos de Mercado:",
-        value: "15",
+        name: "Anos de mercado",
+        value: 15,
         image: ImobiFaces
     },
     {
-        name: "Corretores Especialistas:",
-        value: "25",
+        name: "Corretores especialistas",
+        value: 25,
         image: Corretores
     }
 ]
 
+const DIFERENCIAIS = [
+    "Imóveis vistoriados e documentação conferida",
+    "Corretor dedicado do primeiro contato até as chaves",
+    "Apoio no financiamento com os principais bancos",
+]
+
+const DEPOIMENTOS = [
+    {
+        nome: "Juliana Prado",
+        info: "Comprou no Residencial Jardim Aurora",
+        foto: juliana,
+        texto: "Era nosso primeiro imóvel e estávamos perdidos com a papelada. A Ana explicou cada etapa e conseguimos o financiamento em menos de um mês.",
+    },
+    {
+        nome: "Marcos Oliveira",
+        info: "Alugou no Edifício Alameda Real",
+        foto: marcos,
+        texto: "Visitei três apartamentos em uma tarde e fechei o contrato no mesmo dia. Atendimento rápido e sem enrolação, recomendo demais.",
+    },
+    {
+        nome: "Camila Ferreira",
+        info: "Comprou no Residencial Mirante do Lago",
+        foto: camila,
+        texto: "O Rafael entendeu exatamente o que a gente procurava. Mostrou só imóveis que faziam sentido e negociou muito bem o valor final.",
+    },
+]
+
 function DataInfo() {
     return (
-        <div id="sobre-nos" className="relative isolate w-full px-8 py-16">
+        <section id="sobre-nos" className="relative isolate w-full px-5 md:px-15 py-20 md:py-28 bg-white">
+            <div className="mx-auto max-w-screen-2xl">
 
-            <Separation/>
-
-            <div className="content-center text-center justify-center mx-auto">
-                <h1 className="font-bold text-3xl pb-10">Sobre nós</h1>
-            </div>
-
-
-            <div className="absolute inset-0 -z-10 pointer-events-none bg-linear-to-r from-blue-50 via-transparent to-transparent" />
-
-            <div className="grid grid-cols-2 md:grid-cols-4 justify-center gap-6">
-                {CARDS_INFO.map((card) => (
-                    <div
-                        className="w-full"
-                        key={card.name}
-                    >
-                        <InfoCard
-                            name={card.name}
-                            value={card.value}
-                            image={card.image}
-                        />
+                {/* Sobre nós */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div>
+                        <p className="text-xs font-bold uppercase tracking-widest text-brand-muted">Sobre nós</p>
+                        <h2 className="mt-2 text-3xl md:text-5xl font-display font-medium tracking-tight text-brand-dark">
+                            Mais de 15 anos transformando visitas em histórias
+                        </h2>
+                        <p className="mt-5 text-lg leading-relaxed text-slate-600">
+                            A ImobiFaces nasceu em Sorocaba com uma ideia simples: tratar cada cliente como se fosse da família.
+                            Hoje atuamos em quatro cidades, com uma equipe de corretores que conhece cada bairro de perto.
+                        </p>
+                        <ul className="mt-8 flex flex-col gap-3">
+                            {DIFERENCIAIS.map((item) => (
+                                <li key={item} className="flex items-center gap-3 font-medium text-brand-dark">
+                                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-muted text-white">
+                                        <CheckIcon className="h-4 w-4" />
+                                    </span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                ))}
-            </div>
 
-        </div>
+                    <div className="grid grid-cols-2 gap-4 md:gap-5">
+                        {CARDS_INFO.map((card, index) => (
+                            <div key={card.name} className={index % 2 === 1 ? "translate-y-6 md:translate-y-10" : ""}>
+                                <InfoCard
+                                    name={card.name}
+                                    value={card.value}
+                                    suffix={card.suffix}
+                                    image={card.image}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Depoimentos */}
+                <div className="mt-28 md:mt-36">
+                    <div className="text-center">
+                        <p className="text-xs font-bold uppercase tracking-widest text-brand-muted">Depoimentos</p>
+                        <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-brand-dark">Quem já encontrou o seu lar</h2>
+                    </div>
+                    <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+                        {DEPOIMENTOS.map((d) => (
+                            <figure key={d.nome} className="flex flex-col rounded-3xl border border-slate-200 bg-slate-50 p-7 transition hover:-translate-y-1 hover:bg-white hover:shadow-xl">
+                                <p className="text-amber-400 tracking-widest" aria-label="5 de 5 estrelas">★★★★★</p>
+                                <blockquote className="mt-4 flex-1 leading-relaxed text-slate-600">“{d.texto}”</blockquote>
+                                <figcaption className="mt-6 flex items-center gap-3">
+                                    <img src={d.foto} alt="" loading="lazy" className="h-12 w-12 rounded-full object-cover" />
+                                    <span>
+                                        <span className="block font-bold text-brand-dark">{d.nome}</span>
+                                        <span className="block text-sm text-slate-500">{d.info}</span>
+                                    </span>
+                                </figcaption>
+                            </figure>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
     )
 }
 
