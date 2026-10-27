@@ -45,13 +45,28 @@ export function buildUrl(page: PageId, params: NavParams = {}, hash?: string): s
     return `${window.location.pathname}${search ? `?${search}` : ""}${hash ? `#${hash}` : ""}`
 }
 
+// marca as entradas do histórico criadas pelo próprio site, assim o botão
+// "Voltar" sabe se a página anterior ainda é do site
+export const APP_STATE = { app: true }
+
+export function veioDoSite(): boolean {
+    return (window.history.state as { app?: boolean } | null)?.app === true
+}
+
 export function getParam(search: string, key: string): string {
     return new URLSearchParams(search).get(key) ?? ""
 }
 
 // Para componentes que não recebem o "navigate" por props (ex.: Footer):
-// troca a URL e avisa o App pelo mesmo evento do botão voltar.
+// pede para o App navegar, do mesmo jeito que os outros links.
+export const EVENTO_NAVEGAR = "imobifaces:navegar"
+
+export interface NavegarDetail {
+    page: PageId
+    params?: NavParams
+    hash?: string
+}
+
 export function goTo(page: PageId, params?: NavParams, hash?: string) {
-    window.history.pushState(null, "", buildUrl(page, params, hash))
-    window.dispatchEvent(new PopStateEvent("popstate"))
+    window.dispatchEvent(new CustomEvent<NavegarDetail>(EVENTO_NAVEGAR, { detail: { page, params, hash } }))
 }

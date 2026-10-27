@@ -5,6 +5,7 @@ import ImovelDetails from "../components/sections/ImovelDetails"
 import Contact from "../components/sections/Contact"
 import CardsList from "../components/ui/CardsList"
 import { ArrowLeftIcon, ArrowRightIcon } from "../components/ui/Icons"
+import { veioDoSite } from "../utils/navigation"
 import type { Navigate } from "../utils/navigation"
 
 interface ImovelPageProps {
@@ -49,7 +50,7 @@ function ImovelPage({ predio, navigate, setImovelEscolhido }: ImovelPageProps) {
                 <nav aria-label="Você está em" className="flex flex-wrap items-center gap-2 pt-6 text-sm text-slate-500">
                     <button
                         type="button"
-                        onClick={() => window.history.length > 1 ? window.history.back() : navigate("todosOsApartamentos")}
+                        onClick={() => veioDoSite() ? window.history.back() : navigate("todosOsApartamentos")}
                         className="mr-2 inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-brand-dark transition hover:border-brand-muted"
                     >
                         <ArrowLeftIcon className="h-4 w-4" /> Voltar
