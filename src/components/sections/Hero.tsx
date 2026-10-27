@@ -10,12 +10,6 @@ interface HeroProps {
 
 const CIDADES = [...new Set(prediosLista.map((predio) => predio.location))].sort()
 
-const DESTAQUES = [
-    { valor: "15+", label: "anos de mercado" },
-    { valor: `${prediosLista.length}`, label: "imóveis selecionados" },
-    { valor: `${CIDADES.length}`, label: "cidades atendidas" },
-]
-
 function Hero({ navigate }: HeroProps) {
     const [tipo, setTipo] = useState<"venda" | "aluguel">("venda")
     const [cidade, setCidade] = useState("")
@@ -35,24 +29,20 @@ function Hero({ navigate }: HeroProps) {
             <div className="w-full max-w-screen-2xl mx-auto px-5 md:px-15 py-16 md:py-24">
                 <div className="max-w-2xl text-left">
 
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs md:text-sm font-medium text-white/90 backdrop-blur">
-                        <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                        Imóveis em São Paulo, Campinas, Sorocaba e Santos
-                    </span>
-
-                    <h1 className="mt-6 text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] text-white">
-                        O lar ideal está mais perto <span className="font-display italic font-medium text-accent">do que você imagina</span>
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] text-white">
+                        Imóveis para morar e investir
                     </h1>
 
-                    <p className="mt-5 text-base md:text-lg text-white/75 leading-relaxed max-w-xl">
-                        Há mais de 15 anos a ImobiFaces conecta pessoas aos seus lares ideais, unindo
-                        atendimento próximo, confiança e as melhores oportunidades do mercado imobiliário.
+                    <p className="mt-5 text-base md:text-lg text-white/80 leading-relaxed max-w-xl">
+                        Há mais de 15 anos conectando pessoas aos seus lares ideais em São Paulo, Campinas,
+                        Sorocaba e Santos, unindo atendimento próximo, confiança e as melhores
+                        oportunidades do mercado imobiliário.
                     </p>
 
                     {/* Busca rápida */}
                     <form
                         onSubmit={buscar}
-                        className="mt-8 flex flex-col sm:flex-row gap-2 rounded-3xl sm:rounded-full bg-white p-2 shadow-2xl shadow-black/30"
+                        className="mt-8 flex max-w-2xl flex-col sm:flex-row gap-2 rounded-3xl sm:rounded-full bg-white p-2 shadow-2xl shadow-black/30"
                     >
                         <div className="flex rounded-full bg-slate-100 p-1" role="group" aria-label="Tipo de negócio">
                             {(["venda", "aluguel"] as const).map((opcao) => (
@@ -90,24 +80,9 @@ function Hero({ navigate }: HeroProps) {
                         </button>
                     </form>
 
-                    <div className="mt-6 flex flex-wrap gap-3 text-white">
-                        <a href="#oportunidades" className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-semibold hover:bg-white/20 transition-all duration-300">
-                            Ver destaques ↓
-                        </a>
-                        <a href="#contato" className="px-6 py-3 rounded-full text-sm font-semibold text-white/80 hover:text-white underline-offset-4 hover:underline transition-all duration-300">
-                            Falar com um especialista
-                        </a>
-                    </div>
-
-                    <dl className="mt-12 grid grid-cols-3 gap-4 max-w-lg border-t border-white/15 pt-6">
-                        {DESTAQUES.map((item) => (
-                            <div key={item.label}>
-                                <dt className="sr-only">{item.label}</dt>
-                                <dd className="text-2xl md:text-4xl font-bold text-white">{item.valor}</dd>
-                                <dd className="text-xs md:text-sm text-white/60">{item.label}</dd>
-                            </div>
-                        ))}
-                    </dl>
+                    <a href="#contato" className="mt-5 inline-flex px-6 py-3 rounded-full border border-white/30 text-sm font-semibold text-white hover:bg-white/10 transition-colors">
+                        Falar com um especialista
+                    </a>
                 </div>
             </div>
 
