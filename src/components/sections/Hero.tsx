@@ -8,7 +8,7 @@ interface HeroProps {
     navigate: Navigate
 }
 
-const CIDADES = [...new Set(prediosLista.map((predio) => predio.location))].sort()
+const CIDADES = [...new Set(prediosLista.map((predio) => predio.location))].sort((a, b) => a.localeCompare(b, "pt-BR"))
 
 function Hero({ navigate }: HeroProps) {
     const [tipo, setTipo] = useState<"venda" | "aluguel">("venda")

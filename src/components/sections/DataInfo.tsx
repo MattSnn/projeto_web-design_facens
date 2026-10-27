@@ -24,6 +24,7 @@ const CARDS_INFO = [
     {
         name: "Anos de mercado",
         value: 15,
+        suffix: "+",
         image: ImobiFaces
     },
     {

@@ -36,7 +36,7 @@ function FilterBar({ filtros, setFiltros, total }: FilterBarProps) {
                         <input
                             type="search"
                             value={filtros.busca}
-                            placeholder="Busque por nome, bairro ou cidade..."
+                            placeholder="Busque por nome, endereço, bairro ou cidade..."
                             onChange={(e) => set("busca", e.target.value)}
                             className="h-12 w-full bg-transparent text-sm text-brand-dark outline-none placeholder:text-slate-400"
                         />
@@ -87,7 +87,7 @@ function FilterBar({ filtros, setFiltros, total }: FilterBarProps) {
                             className={`${selectCls} disabled:cursor-not-allowed disabled:opacity-60`}
                         >
                             <option value={0}>{filtros.tipo === "" && !precoForaDaLista ? "Escolha comprar ou alugar" : "Qualquer"}</option>
-                            {precoForaDaLista && <option value={filtros.precoMax}>{brl.format(filtros.precoMax)}</option>}
+                            {precoForaDaLista && <option value={filtros.precoMax}>{brl.format(filtros.precoMax)}{filtros.tipo === "aluguel" ? "/mês" : ""}</option>}
                             {opcoesPreco.map((p) => <option key={p} value={p}>{brl.format(p)}{filtros.tipo === "aluguel" ? "/mês" : ""}</option>)}
                         </select>
                     </label>

@@ -58,7 +58,7 @@ function FloorPlan({ bedrooms, suites, area }: FloorPlanProps) {
     const m2 = (pct: number) => `${Math.max(Math.round(area * pct), 2)}m²`
 
     return (
-        <svg viewBox={`0 0 ${W} ${H + 44}`} className="h-auto w-full" role="img" aria-label={`Planta ilustrativa com ${bedrooms} quartos e ${area}m²`}>
+        <svg viewBox={`0 0 ${W} ${H + 44}`} className="h-auto w-full" role="img" aria-label={`Planta ilustrativa com ${bedrooms} ${bedrooms === 1 ? "quarto" : "quartos"} e ${area}m²`}>
             {/* varanda */}
             <rect x={PAD} y={H - PAD} width={salaW} height={40} fill="#f0fdf4" stroke="#86efac" strokeWidth={2} strokeDasharray="6 5" />
             <text x={PAD + salaW / 2} y={H + 14} textAnchor="middle" fontSize="13" fill="#15803d" fontWeight="600">Varanda</text>

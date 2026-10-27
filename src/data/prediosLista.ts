@@ -93,7 +93,7 @@ const carlos: Corretor = {
     photo: fotoCarlos,
     rating: 4.9,
     reviews: 127,
-    phone: "5511999990001",
+    phone: "5519999990001",
 };
 
 const ana: Corretor = {
@@ -102,7 +102,7 @@ const ana: Corretor = {
     photo: fotoAna,
     rating: 4.8,
     reviews: 96,
-    phone: "5519999990002",
+    phone: "5511999990002",
 };
 
 const rafael: Corretor = {
@@ -126,7 +126,7 @@ export const prediosLista: Predio[] = [
         images: [fachadaAurora, sala1, cozinha1, quarto1, banheiro1, lazerPiscina1],
         planta: "Planta de 45m²",
         description:
-            "Apartamento compacto e bem aproveitado, perfeito para quem está comprando o primeiro imóvel. Ambientes integrados, boa iluminação natural e um condomínio com lazer completo a poucos passos do metrô.",
+            "Apartamento compacto e bem aproveitado, perfeito para quem está comprando o primeiro imóvel. Ambientes integrados, boa iluminação natural e um condomínio com lazer completo a 700 m do metrô.",
         status: "À venda",
         tag: "Compacto",
         address: "Rua das Acácias, 120",
@@ -183,7 +183,7 @@ export const prediosLista: Predio[] = [
         area: "70m²",
         location: "São Paulo",
         price: 540000,
-        images: [fachadaJardimVerde, sala3, cozinha3, quarto3, banheiro3, lazerPiscina2],
+        images: [fachadaJardimVerde, sala3, cozinha3, quarto3, banheiro3],
         planta: "Planta de 70m²",
         description:
             "Apartamento espaçoso pensado para a família, em condomínio cercado de áreas verdes. Conta com churrasqueira, brinquedoteca e playground, e está a poucos metros de escola e mercado.",
@@ -213,7 +213,7 @@ export const prediosLista: Predio[] = [
         area: "80m²",
         location: "Campinas",
         price: 835000,
-        images: [fachadaPracaNova, sala4, cozinha4, quarto4, banheiro4, lazerCoworking],
+        images: [fachadaPracaNova, sala4, cozinha4, quarto4, banheiro4, lazerPiscina1],
         planta: "Planta de 80m²",
         description:
             "Apartamento moderno no Taquaral, com acabamento refinado e sala ampla voltada para a área verde. Perto da Lagoa do Taquaral, é ótimo para quem gosta de caminhar e ter qualidade de vida no dia a dia.",
@@ -252,7 +252,7 @@ export const prediosLista: Predio[] = [
         area: "70m²",
         location: "São Paulo",
         price: 610000,
-        images: [fachadaIpes, sala5, jantar1, quarto5, banheiro1, lazerPiscina1],
+        images: [fachadaIpes, sala5, jantar1, quarto5, banheiro1, lazerPiscina2],
         planta: "Planta de 70m²",
         description:
             "Apartamento amplo, ideal para famílias que querem conforto sem abrir mão da praticidade. Fica perto do metrô e do comércio local, em um condomínio tranquilo e com ótima estrutura de lazer.",
@@ -282,7 +282,7 @@ export const prediosLista: Predio[] = [
         area: "120m²",
         location: "Campinas",
         price: 1250000,
-        images: [fachadaCentralTower, sala6, jantar2, quarto6, banheiro2, lazerAcademia],
+        images: [fachadaCentralTower, sala6, jantar2, quarto6, banheiro2, lazerPiscina1],
         planta: "Planta de 120m²",
         description:
             "Apartamento de alto padrão em andar alto, com vista aberta e três suítes. Espaço de sobra para toda a família receber bem, em um prédio com lazer completo e segurança 24 horas.",
@@ -360,7 +360,7 @@ export const prediosLista: Predio[] = [
         area: "62m²",
         location: "Sorocaba",
         price: 480000,
-        images: [fachadaVistaParque, sala8, cozinha2, quarto1, banheiro4, lazerCoworking],
+        images: [fachadaVistaParque, sala8, cozinha2, quarto1, banheiro4, lazerPiscina1],
         planta: "Planta de 62m²",
         description:
             "Apartamento bem localizado no Campolim, com suíte, sacada e ótima ventilação. O condomínio tem lazer completo e fica a poucos minutos de parques, escolas e do comércio do bairro.",
@@ -390,7 +390,7 @@ export const prediosLista: Predio[] = [
         area: "32m²",
         location: "São Paulo",
         price: 3200,
-        images: [fachadaStudio, sala9, cozinha3, quarto2, banheiro1, lazerPiscina1],
+        images: [fachadaStudio, sala9, cozinha3, quarto2, banheiro1, lazerCoworking],
         planta: "Planta de 32m²",
         description:
             "Studio mobiliado e pronto para morar, em prédio com coworking e lavanderia compartilhada. Ideal para quem trabalha ou estuda na região e quer praticidade, com metrô e mercado praticamente na porta.",
@@ -420,7 +420,7 @@ export const prediosLista: Predio[] = [
         area: "95m²",
         location: "Campinas",
         price: 5800,
-        images: [fachadaAlameda, sala1, cozinha4, quarto3, banheiro2, lazerAcademia],
+        images: [fachadaAlameda, sala1, cozinha4, quarto3, banheiro2, lazerPiscina2],
         planta: "Planta de 95m²",
         description:
             "Apartamento amplo para locação, em condomínio que aceita pets e tem área verde generosa. Cozinha planejada, três dormitórios e fácil acesso à Lagoa do Taquaral.",
@@ -450,7 +450,7 @@ export const prediosLista: Predio[] = [
         area: "54m²",
         location: "Sorocaba",
         price: 2400,
-        images: [fachadaBosqueSul, sala2, jantar1, quarto4, banheiro3, lazerPiscina2],
+        images: [fachadaBosqueSul, sala2, jantar1, quarto4, banheiro3],
         planta: "Planta de 54m²",
         description:
             "Apartamento de dois dormitórios em condomínio tranquilo, com churrasqueira e playground. Boa opção de locação para casais e pequenas famílias, perto de escola, mercado e transporte.",
@@ -480,7 +480,7 @@ export const prediosLista: Predio[] = [
         area: "150m²",
         location: "Sorocaba",
         price: 1480000,
-        images: [fachadaMirante, sala3, jantar2, quarto5, banheiro4, lazerCoworking],
+        images: [fachadaMirante, sala3, jantar2, quarto5, banheiro4, lazerPiscina1],
         planta: "Planta de 150m²",
         description:
             "Cobertura de alto padrão com terraço amplo e vista aberta para o lago. Quatro dormitórios, três suítes e quatro vagas, em um prédio com coworking, piscina e estrutura completa de lazer.",
@@ -520,7 +520,7 @@ export const prediosLista: Predio[] = [
         area: "88m²",
         location: "Santos",
         price: 760000,
-        images: [fachadaTerracoSantos, sala4, cozinha1, quarto6, banheiro1, lazerPiscina1],
+        images: [fachadaTerracoSantos, sala4, cozinha1, quarto6, banheiro1, lazerPiscina2],
         planta: "Planta de 88m²",
         description:
             "Apartamento a poucos passos da praia, com varanda e vista para o mar. Três dormitórios bem distribuídos e condomínio com piscina e academia, perfeito para morar ou como imóvel de temporada.",
