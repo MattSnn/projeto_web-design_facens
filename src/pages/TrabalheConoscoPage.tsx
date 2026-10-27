@@ -4,6 +4,7 @@ import Footer from "../components/layout/Footer"
 import equipeReuniao from "../components/assets/equipe-reuniao.jpg"
 import equipeTrabalho from "../components/assets/equipe-trabalho.jpg"
 import { CheckIcon, PinIcon } from "../components/ui/Icons"
+import { emailValido, mascaraTelefone, nomeValido, telefoneValido } from "../utils/formulario"
 
 const BENEFICIOS = [
     { titulo: "Leads qualificados", texto: "Você recebe contatos de clientes do site e das campanhas, sem precisar prospectar do zero." },
@@ -25,11 +26,27 @@ function TrabalheConoscoPage() {
     const [vaga, setVaga] = useState(VAGAS[0].titulo)
     const [enviado, setEnviado] = useState(false)
     const [nome, setNome] = useState("")
+    const [email, setEmail] = useState("")
+    const [telefone, setTelefone] = useState("")
 
     function enviar(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         if (!e.currentTarget.reportValidity()) return
         setEnviado(true)
+    }
+
+    // mensagens próprias no lugar da validação padrão do navegador, que aceitava
+    // nome só com espaços e telefone com letras
+    function validarCampo(campo: HTMLInputElement | null, ok: boolean, mensagem: string) {
+        campo?.setCustomValidity(campo.value === "" || ok ? "" : mensagem)
+    }
+
+    function validarArquivo(campo: HTMLInputElement) {
+        const arquivo = campo.files?.[0]
+        let erro = ""
+        if (arquivo && !/\.(pdf|docx?)$/i.test(arquivo.name)) erro = "Envie o currículo em PDF ou Word."
+        else if (arquivo && arquivo.size > 5 * 1024 * 1024) erro = "O arquivo deve ter no máximo 5 MB."
+        campo.setCustomValidity(erro)
     }
 
     function candidatar(titulo: string) {
@@ -116,21 +133,21 @@ function TrabalheConoscoPage() {
                                 <CheckIcon className="h-8 w-8" />
                             </span>
                             <h3 className="mt-4 text-xl font-bold text-brand-dark">Candidatura recebida!</h3>
-                            <p className="mt-2 text-slate-600">Obrigado, {nome.split(" ")[0]}. Recebemos seu interesse na vaga de {vaga}.</p>
+                            <p className="mt-2 text-slate-600">Obrigado, {nome.trim().split(/\s+/)[0]}. Recebemos seu interesse na vaga de {vaga}.</p>
                         </div>
                     ) : (
                         <form onSubmit={enviar} className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <label className="flex flex-col gap-1.5 text-sm font-medium text-brand-dark sm:col-span-2">
                                 Nome completo
-                                <input required minLength={3} value={nome} onChange={(e) => setNome(e.target.value)} autoComplete="name" className={inputCls} />
+                                <input required value={nome} onChange={(e) => { setNome(e.target.value); validarCampo(e.target, nomeValido(e.target.value), "Informe seu nome completo.") }} autoComplete="name" className={inputCls} />
                             </label>
                             <label className="flex flex-col gap-1.5 text-sm font-medium text-brand-dark">
                                 E-mail
-                                <input required type="email" autoComplete="email" className={inputCls} />
+                                <input required type="email" value={email} onChange={(e) => { setEmail(e.target.value); validarCampo(e.target, emailValido(e.target.value), "Informe um e-mail válido, como nome@email.com.") }} autoComplete="email" className={inputCls} />
                             </label>
                             <label className="flex flex-col gap-1.5 text-sm font-medium text-brand-dark">
                                 Telefone
-                                <input required type="tel" autoComplete="tel" placeholder="(15) 99999-9999" className={inputCls} />
+                                <input required type="tel" value={telefone} onChange={(e) => { const v = mascaraTelefone(e.target.value); setTelefone(v); validarCampo(e.target, telefoneValido(v), "Informe um telefone com DDD.") }} autoComplete="tel" placeholder="(15) 99999-9999" className={inputCls} />
                             </label>
                             <label className="flex flex-col gap-1.5 text-sm font-medium text-brand-dark">
                                 Vaga
@@ -143,8 +160,8 @@ function TrabalheConoscoPage() {
                                 <input placeholder="Opcional" className={inputCls} />
                             </label>
                             <label className="flex flex-col gap-1.5 text-sm font-medium text-brand-dark sm:col-span-2">
-                                Currículo (PDF)
-                                <input required type="file" accept=".pdf,.doc,.docx" className="w-full rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:bg-brand-light file:px-4 file:py-2 file:font-semibold file:text-brand-muted" />
+                                Currículo (PDF ou Word, até 5 MB)
+                                <input required type="file" accept=".pdf,.doc,.docx" onChange={(e) => validarArquivo(e.target)} className="w-full rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:bg-brand-light file:px-4 file:py-2 file:font-semibold file:text-brand-muted" />
                             </label>
                             <label className="flex flex-col gap-1.5 text-sm font-medium text-brand-dark sm:col-span-2">
                                 Por que você quer trabalhar na ImobiFaces?

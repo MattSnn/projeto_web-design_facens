@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { CheckIcon, MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "../ui/Icons";
+import { emailValido, mascaraTelefone, nomeValido, telefoneValido } from "../../utils/formulario";
 
 const WHATSAPP = "5511999999999"
 
@@ -21,20 +22,11 @@ interface Form {
 
 const VAZIO: Form = { nome: "", email: "", telefone: "", interesse: "Comprar", mensagem: "" }
 
-// (11) 98765-4321
-function mascaraTelefone(valor: string) {
-    const d = valor.replace(/\D/g, "").slice(0, 11)
-    if (d.length <= 2) return d.length ? `(${d}` : ""
-    if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`
-    if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`
-    return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`
-}
-
 function validar(form: Form) {
     const erros: Partial<Record<keyof Form, string>> = {}
-    if (form.nome.trim().length < 3) erros.nome = "Informe seu nome completo."
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) erros.email = "Informe um e-mail válido."
-    if (form.telefone.replace(/\D/g, "").length < 10) erros.telefone = "Informe um telefone com DDD."
+    if (!nomeValido(form.nome)) erros.nome = "Informe seu nome completo."
+    if (!emailValido(form.email)) erros.email = "Informe um e-mail válido."
+    if (!telefoneValido(form.telefone)) erros.telefone = "Informe um telefone com DDD."
     if (form.mensagem.trim().length < 10) erros.mensagem = "Conte um pouco mais (mínimo 10 caracteres)."
     return erros
 }
@@ -114,7 +106,7 @@ function Contact() {
                             </span>
                             <h3 className="mt-5 text-2xl font-bold">Mensagem enviada!</h3>
                             <p className="mt-2 max-w-sm text-slate-500">
-                                Obrigado, {form.nome.split(" ")[0]}. Um especialista vai entrar em contato pelo e-mail ou telefone informado.
+                                Obrigado, {form.nome.trim().split(/\s+/)[0]}. Um especialista vai entrar em contato pelo e-mail ou telefone informado.
                             </p>
                             <button type="button" onClick={novaMensagem} className="mt-6 font-semibold text-brand-muted hover:underline">
                                 Enviar outra mensagem
