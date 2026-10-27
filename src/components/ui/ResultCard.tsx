@@ -12,9 +12,8 @@ interface ResultCardProps {
 
 function ResultCard({ label, value, suffix, bar, rows, note, cta, onCta }: ResultCardProps) {
     return (
-        <aside className="relative isolate flex flex-col gap-5 overflow-hidden rounded-3xl bg-brand-dark p-6 md:p-9 text-white shadow-xl shadow-brand-dark/20">
-            <div className="pointer-events-none absolute -right-16 -top-16 -z-10 h-56 w-56 rounded-full bg-brand-muted/40 blur-3xl" />
-            <p className="text-xs uppercase tracking-widest text-slate-300">{label}</p>
+        <aside className="flex flex-col gap-5 rounded-3xl bg-brand-dark p-6 md:p-9 text-white shadow-xl shadow-brand-dark/20">
+            <p className="text-sm font-medium text-slate-300">{label}</p>
             <p className="text-4xl md:text-5xl font-bold tracking-tight">
                 {value}
                 {suffix && <span className="text-lg font-medium text-slate-300">{suffix}</span>}
@@ -52,7 +51,7 @@ function ResultCard({ label, value, suffix, bar, rows, note, cta, onCta }: Resul
                 }}
                 className="mt-auto flex h-12 items-center justify-center rounded-full bg-accent font-bold text-on-accent hover:bg-accent-hover transition"
             >
-                {cta} →
+                {cta}
             </a>
             <p className="text-xs text-slate-400">{note}</p>
         </aside>

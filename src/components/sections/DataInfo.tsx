@@ -68,9 +68,8 @@ function DataInfo() {
                 {/* Sobre nós */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-brand-muted">Sobre nós</p>
-                        <h2 className="mt-2 text-3xl md:text-5xl font-display font-medium tracking-tight text-brand-dark">
-                            Mais de 15 anos transformando visitas em histórias
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-brand-dark">
+                            Sobre a ImobiFaces
                         </h2>
                         <p className="mt-5 text-lg leading-relaxed text-slate-600">
                             A ImobiFaces nasceu em Sorocaba com uma ideia simples: tratar cada cliente como se fosse da família.
@@ -105,14 +104,12 @@ function DataInfo() {
                 {/* Depoimentos */}
                 <div className="mt-28 md:mt-36">
                     <div className="text-center">
-                        <p className="text-xs font-bold uppercase tracking-widest text-brand-muted">Depoimentos</p>
-                        <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-brand-dark">Quem já encontrou o seu lar</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-brand-dark">O que dizem nossos clientes</h2>
                     </div>
                     <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
                         {DEPOIMENTOS.map((d) => (
                             <figure key={d.nome} className="flex flex-col rounded-3xl border border-slate-200 bg-slate-50 p-7 transition hover:-translate-y-1 hover:bg-white hover:shadow-xl">
-                                <p className="text-amber-400 tracking-widest" aria-label="5 de 5 estrelas">★★★★★</p>
-                                <blockquote className="mt-4 flex-1 leading-relaxed text-slate-600">“{d.texto}”</blockquote>
+                                <blockquote className="flex-1 leading-relaxed text-slate-600">“{d.texto}”</blockquote>
                                 <figcaption className="mt-6 flex items-center gap-3">
                                     <img src={d.foto} alt="" loading="lazy" className="h-12 w-12 rounded-full object-cover" />
                                     <span>

@@ -7,6 +7,7 @@ import AptoList from "../components/sections/AptoList"
 import prediosLista, { type Predio } from "../data/prediosLista";
 import { useEffect, useState } from "react";
 import { getParam } from "../utils/navigation";
+import buildings from "../components/assets/buildings.jpg";
 
 interface AptoPageProps {
     setImovelEscolhido: (imovel: Predio) => void;
@@ -74,12 +75,13 @@ function AptoPage({ setImovelEscolhido, search }: AptoPageProps) {
     return (
         <div className="bg-slate-50">
             {/* Cabeçalho da página */}
-            <header className="relative overflow-hidden bg-brand-dark px-4 md:px-8 pt-12 pb-20 md:pt-16 md:pb-24 text-white">
-                <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-muted/40 blur-3xl" />
-                <div className="pointer-events-none absolute -left-20 bottom-0 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
-                <div className="relative mx-auto max-w-screen-2xl">
-                    <p className="text-xs font-bold uppercase tracking-widest text-accent">Catálogo ImobiFaces</p>
-                    <h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight">Encontre seu próximo endereço</h1>
+            <header
+                className="relative isolate bg-brand-dark bg-cover bg-center px-4 md:px-8 pt-12 pb-20 md:pt-16 md:pb-24 text-white"
+                style={{ backgroundImage: `url(${buildings})` }}
+            >
+                <div className="absolute inset-0 -z-10 bg-brand-full-dark/80" />
+                <div className="mx-auto max-w-screen-2xl">
+                    <h1 className="text-3xl md:text-5xl font-bold tracking-tight">Encontre seu próximo endereço</h1>
                     <p className="mt-3 max-w-xl text-brand-light/80">
                         Filtre por tipo, quartos, metragem e preço. Todos os anúncios são verificados pela nossa equipe.
                     </p>

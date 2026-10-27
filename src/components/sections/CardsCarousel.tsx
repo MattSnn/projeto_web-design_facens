@@ -56,12 +56,11 @@ function CardsCarrosel({ setImovelEscolhido, onVerTodos }: CardsCarroselProps) {
             <div className="mx-auto max-w-screen-2xl px-5 md:px-15">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
                     <div className="max-w-xl">
-                        <p className="text-xs font-bold uppercase tracking-widest text-brand-muted">Seleção ImobiFaces</p>
-                        <h2 className="mt-2 text-3xl md:text-5xl font-display font-medium tracking-tight text-brand-dark">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-brand-dark">
                             Imóveis em destaque
                         </h2>
                         <p className="mt-3 text-slate-500">
-                            Apartamentos escolhidos a dedo pelos nossos corretores, prontos para visitar.
+                            Apartamentos à venda e para alugar selecionados pela nossa equipe.
                         </p>
                     </div>
                     <div className="flex items-center gap-3">

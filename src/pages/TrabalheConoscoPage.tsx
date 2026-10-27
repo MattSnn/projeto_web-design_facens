@@ -45,9 +45,8 @@ function TrabalheConoscoPage() {
                 <img src={equipeReuniao} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30" />
                 <div className="absolute inset-0 -z-10 bg-linear-to-r from-brand-full-dark via-brand-full-dark/85 to-brand-full-dark/40" />
                 <div className="mx-auto max-w-screen-2xl px-5 md:px-15 py-20 md:py-32">
-                    <p className="text-xs font-bold uppercase tracking-widest text-accent">Trabalhe conosco</p>
-                    <h1 className="mt-3 max-w-3xl text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-                        Construa sua carreira com quem <span className="font-display italic font-medium text-accent">entende de gente</span>
+                    <h1 className="max-w-3xl text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+                        Trabalhe na ImobiFaces
                     </h1>
                     <p className="mt-5 max-w-xl text-lg text-white/75">
                         Somos 25 corretores especialistas espalhados por quatro cidades. Se você gosta de pessoas e de bons negócios, tem lugar para você aqui.
@@ -77,10 +76,6 @@ function TrabalheConoscoPage() {
                 </div>
                 <div className="relative">
                     <img src={equipeTrabalho} alt="Equipe da ImobiFaces trabalhando junta" loading="lazy" className="aspect-4/3 w-full rounded-3xl object-cover shadow-2xl" />
-                    <div className="absolute -bottom-6 left-6 rounded-2xl bg-white px-6 py-4 shadow-xl">
-                        <p className="text-3xl font-bold text-brand-dark">4,8 ★</p>
-                        <p className="text-sm text-slate-500">nota da equipe como lugar para trabalhar</p>
-                    </div>
                 </div>
             </section>
 

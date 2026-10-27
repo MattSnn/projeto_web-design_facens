@@ -69,17 +69,13 @@ function Contact() {
     const borda = (campo: keyof Form) => (mostrarErro(campo) ? "border-red-400" : "border-slate-200")
 
     return (
-        <section id="contato" className="relative isolate overflow-hidden bg-brand-dark px-5 md:px-15 py-20 md:py-28 text-white">
-            <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-96 w-96 rounded-full bg-brand-muted/30 blur-3xl" />
-            <div className="pointer-events-none absolute -right-20 bottom-0 -z-10 h-80 w-80 rounded-full bg-accent/15 blur-3xl" />
-
+        <section id="contato" className="bg-brand-dark px-5 md:px-15 py-20 md:py-28 text-white">
             <div className="mx-auto grid max-w-6xl grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-start">
 
                 {/* Canais */}
                 <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-accent">Fale com a gente</p>
-                    <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
-                        Vamos encontrar o seu <span className="font-display italic font-medium text-accent pr-1">próximo lar</span>?
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+                        Fale com um corretor
                     </h2>
                     <p className="mt-4 max-w-md text-brand-light/75">
                         Mande uma mensagem ou escolha um dos canais abaixo. Um especialista responde em até 1 hora útil.

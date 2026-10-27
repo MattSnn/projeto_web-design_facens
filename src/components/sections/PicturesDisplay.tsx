@@ -67,7 +67,7 @@ function PicturesDisplay({ pictures, name }: PicturesDisplayProps) {
                                     <>
                                         <span className="pointer-events-none absolute inset-0 bg-linear-to-t from-brand-full-dark/85 via-brand-full-dark/30 to-transparent" />
                                         <span className="absolute inset-x-0 bottom-0 p-4 text-right text-lg font-semibold">
-                                            Ver todas as {total} fotos →
+                                            Ver todas as fotos ({total})
                                         </span>
                                     </>
                                 )}

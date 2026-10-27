@@ -38,15 +38,10 @@ function MainCalculator({ navigate }: MainCalculatorProps) {
     return (
         <div className="bg-slate-50">
             {/* Hero */}
-            <section className="relative isolate overflow-hidden bg-brand-dark px-4 md:px-15 pt-12 pb-24 md:pt-16 md:pb-32 text-white">
-                <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-80 w-80 rounded-full bg-brand-muted/40 blur-3xl" />
-                <div className="pointer-events-none absolute left-1/3 bottom-0 -z-10 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
+            <section className="bg-brand-dark px-4 md:px-15 pt-12 pb-24 md:pt-16 md:pb-32 text-white">
                 <div className="max-w-7xl mx-auto">
-                    <p className="text-xs font-bold uppercase tracking-widest text-accent">
-                        Financiamento, consórcio e aluguel
-                    </p>
-                    <h1 className="mt-3 max-w-3xl text-3xl md:text-5xl font-bold tracking-tight">
-                        Descubra quanto cabe no seu bolso <span className="font-display italic font-medium text-accent">antes</span> de escolher o imóvel
+                    <h1 className="max-w-3xl text-3xl md:text-5xl font-bold tracking-tight">
+                        Descubra quanto cabe no seu bolso antes de escolher o imóvel
                     </h1>
                     <p className="mt-4 max-w-2xl text-base md:text-lg text-brand-light/75">
                         Simule na hora, compare os caminhos e fale com um especialista quando estiver pronto.

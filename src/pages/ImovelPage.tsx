@@ -4,7 +4,7 @@ import prediosLista, { type Predio } from "../data/prediosLista"
 import ImovelDetails from "../components/sections/ImovelDetails"
 import Contact from "../components/sections/Contact"
 import CardsList from "../components/ui/CardsList"
-import { ArrowLeftIcon } from "../components/ui/Icons"
+import { ArrowLeftIcon, ArrowRightIcon } from "../components/ui/Icons"
 import type { Navigate } from "../utils/navigation"
 
 interface ImovelPageProps {
@@ -18,8 +18,7 @@ function ImovelPage({ predio, navigate, setImovelEscolhido }: ImovelPageProps) {
         return (
             <div className="bg-slate-50 min-h-[calc(100vh-5rem)] flex flex-col">
                 <main className="flex-1 flex flex-col items-center justify-center gap-3 px-4 py-24 text-center">
-                    <span className="text-6xl" aria-hidden="true">🏚️</span>
-                    <h1 className="mt-2 text-2xl md:text-3xl font-bold text-brand-dark">Imóvel não encontrado</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold text-brand-dark">Imóvel não encontrado</h1>
                     <p className="text-slate-500">O link pode estar incorreto ou o anúncio foi removido.</p>
                     <button
                         type="button"
@@ -75,15 +74,14 @@ function ImovelPage({ predio, navigate, setImovelEscolhido }: ImovelPageProps) {
                     <section className="mt-20">
                         <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
                             <div>
-                                <p className="text-xs font-bold uppercase tracking-widest text-brand-muted">Continue explorando</p>
-                                <h2 className="mt-1 text-2xl md:text-3xl font-bold tracking-tight text-brand-dark">Imóveis semelhantes</h2>
+                                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-brand-dark">Imóveis semelhantes</h2>
                             </div>
                             <button
                                 type="button"
                                 onClick={() => navigate("todosOsApartamentos", { tipo })}
-                                className="font-semibold text-brand-muted hover:underline"
+                                className="inline-flex items-center gap-1.5 font-semibold text-brand-muted hover:underline"
                             >
-                                Ver todos →
+                                Ver todos <ArrowRightIcon className="h-4 w-4" />
                             </button>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

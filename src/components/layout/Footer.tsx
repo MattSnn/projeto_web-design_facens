@@ -109,7 +109,7 @@ function Footer() {
                 <div className="mt-14 flex flex-col md:flex-row gap-3 justify-between border-t border-white/10 pt-6 text-xs text-brand-light/45">
                     <p>&copy; 2026 ImobiFaces. Todos os direitos reservados. Projeto acadêmico de Web Design · Facens.</p>
                     <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }) }} className="hover:text-accent">
-                        Voltar ao topo ↑
+                        Voltar ao topo
                     </a>
                 </div>
             </div>

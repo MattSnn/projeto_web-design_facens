@@ -45,8 +45,7 @@ function AptoList({ title, predios, setImovelEscolhido, onLimpar }: AptoListProp
                 ) : (
                     // Estado vazio: aparece quando os filtros não retornam nada
                     <div className="flex flex-col items-center rounded-3xl border border-dashed border-slate-300 bg-white py-20 px-6 text-center">
-                        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-light text-3xl" aria-hidden="true">🔍</span>
-                        <p className="mt-4 text-lg font-bold text-ink">
+                        <p className="text-lg font-bold text-ink">
                             Nenhum imóvel encontrado
                         </p>
                         <p className="mt-1 text-sm text-ink/70">
