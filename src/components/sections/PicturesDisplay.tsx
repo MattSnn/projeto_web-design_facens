@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 import { ArrowLeftIcon, ArrowRightIcon, CloseIcon } from "../ui/Icons"
 
 interface PicturesDisplayProps {
@@ -14,18 +15,37 @@ function PicturesDisplay({ pictures, name }: PicturesDisplayProps) {
     const anterior = () => setAberta((i) => (i === null ? i : (i - 1 + total) % total))
     const proxima = () => setAberta((i) => (i === null ? i : (i + 1) % total))
 
+    // arrastar o dedo para os lados troca a foto (celular)
+    const toqueX = useRef<number | null>(null)
+    function fimDoToque(x: number) {
+        if (toqueX.current === null) return
+        const delta = x - toqueX.current
+        if (delta > 50) anterior()
+        if (delta < -50) proxima()
+        toqueX.current = null
+    }
+
     useEffect(() => {
         if (aberta === null) return
+        // com a galeria aberta o resto da página fica "inerte": o Tab não sai do modal
+        // (nem entra no mapa do Google) e o Esc continua funcionando
+        const root = document.getElementById("root")
+        if (root) root.inert = true
         document.body.style.overflow = "hidden"
+        // botão voltar do navegador fecha a galeria
+        const onPopState = () => setAberta(null)
         const onKey = (e: KeyboardEvent) => {
             if (e.key === "Escape") setAberta(null)
             if (e.key === "ArrowLeft") setAberta((i) => (i === null ? i : (i - 1 + total) % total))
             if (e.key === "ArrowRight") setAberta((i) => (i === null ? i : (i + 1) % total))
         }
         window.addEventListener("keydown", onKey)
+        window.addEventListener("popstate", onPopState)
         return () => {
+            if (root) root.inert = false
             document.body.style.overflow = ""
             window.removeEventListener("keydown", onKey)
+            window.removeEventListener("popstate", onPopState)
         }
     }, [aberta, total])
 
@@ -77,8 +97,8 @@ function PicturesDisplay({ pictures, name }: PicturesDisplayProps) {
                 </div>
             </div>
 
-            {/* Lightbox */}
-            {aberta !== null && (
+            {/* Lightbox (fora do #root para não ficar inerte junto com a página) */}
+            {aberta !== null && createPortal(
                 <div
                     role="dialog"
                     aria-modal="true"
@@ -101,7 +121,11 @@ function PicturesDisplay({ pictures, name }: PicturesDisplayProps) {
                         </button>
                     </div>
 
-                    <div className="relative flex flex-1 items-center justify-center px-4 md:px-20 min-h-0">
+                    <div
+                        className="relative flex flex-1 items-center justify-center px-4 md:px-20 min-h-0"
+                        onTouchStart={(e) => { toqueX.current = e.touches[0].clientX }}
+                        onTouchEnd={(e) => fimDoToque(e.changedTouches[0].clientX)}
+                    >
                         <img
                             key={pictures[aberta]}
                             src={pictures[aberta]}
@@ -147,7 +171,8 @@ function PicturesDisplay({ pictures, name }: PicturesDisplayProps) {
                         ))}
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </>
     )
