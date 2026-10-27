@@ -77,7 +77,7 @@ function FinanciamentoPanel({ onVerImoveis }: FinanciamentoPanelProps) {
                         ))}
                     </select>
                 </Field>
-                <NumberField label="Juros (% ao ano)" value={juros} onChange={setJuros} step={0.1} />
+                <NumberField label="Juros (% ao ano)" value={juros} onChange={setJuros} step={0.1} max={50} />
             </div>
  
             <div className="flex flex-col gap-2 text-sm text-slate-500">

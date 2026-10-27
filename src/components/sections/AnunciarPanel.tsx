@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { brl } from "../../utils/finance"
+import { brl, pct } from "../../utils/finance"
 import NumberField from "../ui/NumberField"
 import Panel from "../ui/Panel"
 import ResultCard from "../ui/ResultCard"
@@ -24,7 +24,7 @@ function AnunciarPanel() {
                     rows={[
                         { label: "Renda líquida por ano", value: brl.format(liquidoAnual) },
                         { label: "Taxa de administração", value: `${brl.format((aluguel * adm) / 100)}/mês` },
-                        { label: "Rentabilidade anual líquida", value: `${rentabilidade.toFixed(1).replace(".", ",")}%` },
+                        { label: "Rentabilidade anual líquida", value: pct(Math.round(rentabilidade * 10) / 10) },
                     ]}
                     note="Estimativa simples: não considera imposto de renda sobre aluguel, reformas nem impostos do imóvel."
                     cta="Anunciar meu imóvel"
@@ -32,10 +32,10 @@ function AnunciarPanel() {
             }
         >
             <NumberField label="Valor do imóvel (R$)" value={valor} onChange={setValor} step={10000} />
-            <NumberField label="Aluguel pretendido (R$/mês)" value={aluguel} onChange={setAluguel} step={100} />
+            <NumberField label="Aluguel pretendido (R$/mês)" value={aluguel} onChange={setAluguel} step={100} max={10_000_000} />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <NumberField label="Taxa de administração (%)" value={adm} onChange={setAdm} step={0.5} />
-                <NumberField label="Meses vagos por ano" value={vago} onChange={setVago} />
+                <NumberField label="Taxa de administração (%)" value={adm} onChange={setAdm} step={0.5} max={100} />
+                <NumberField label="Meses vagos por ano" value={vago} onChange={setVago} max={12} />
             </div>
         </Panel>
     )

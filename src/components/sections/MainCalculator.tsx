@@ -23,7 +23,7 @@ const COMPARATIVO = [
 ]
 
 const DICAS = [
-    { titulo: "Custos além da entrada", texto: "ITBI, escritura e registro costumam somar de 3% a 5% do valor do imóvel. Entre no planejamento." },
+    { titulo: "Custos além da entrada", texto: "ITBI, escritura e registro costumam somar de 3% a 5% do valor do imóvel. Inclua esses custos no planejamento." },
     { titulo: "Renda e score", texto: "Os bancos costumam limitar a parcela a cerca de 30% da renda e analisam seu histórico de crédito." },
     { titulo: "Documentos prontos", texto: "RG, CPF, comprovante de renda e de residência. Ter tudo em mãos acelera a aprovação." },
 ]
@@ -54,10 +54,11 @@ function MainCalculator({ navigate }: MainCalculatorProps) {
                 {/* Abas + simulador */}
                 <section id="simuladores" className="flex flex-col gap-5">
                     <Segmented options={ABAS} value={aba} onChange={setAba} />
-                    {aba === "financiamento" && <FinanciamentoPanel onVerImoveis={(valor) => navigate("todosOsApartamentos", { tipo: "venda", precoMax: valor })} />}
-                    {aba === "consorcio" && <ConsorcioPanel />}
-                    {aba === "aluguel" && <AluguelPanel onVerImoveis={(valor) => navigate("todosOsApartamentos", { tipo: "aluguel", precoMax: valor })} />}
-                    {aba === "anunciar" && <AnunciarPanel />}
+                    {/* os painéis ficam montados (só escondidos) para não perder o que foi digitado ao trocar de aba */}
+                    <div hidden={aba !== "financiamento"}><FinanciamentoPanel onVerImoveis={(valor) => navigate("todosOsApartamentos", { tipo: "venda", precoMax: valor })} /></div>
+                    <div hidden={aba !== "consorcio"}><ConsorcioPanel /></div>
+                    <div hidden={aba !== "aluguel"}><AluguelPanel onVerImoveis={(valor) => navigate("todosOsApartamentos", { tipo: "aluguel", precoMax: valor })} /></div>
+                    <div hidden={aba !== "anunciar"}><AnunciarPanel /></div>
                 </section>
 
                 {/* Comparativo */}

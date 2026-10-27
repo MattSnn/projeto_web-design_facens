@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { brl } from "../../utils/finance"
+import { brl, pct } from "../../utils/finance"
 import NumberField from "../ui/NumberField"
 import Panel from "../ui/Panel"
 import ResultCard from "../ui/ResultCard"
@@ -27,7 +27,7 @@ function AluguelPanel({ onVerImoveis }: AluguelPanelProps) {
                     rows={[
                         { label: "Custo por ano", value: brl.format(mensal * 12) },
                         { label: "Renda usual exigida (3× o aluguel)", value: brl.format(aluguel * 3) },
-                        { label: `Aluguel após reajuste de ${reajuste}%`, value: brl.format(aluguel * (1 + reajuste / 100)) },
+                        { label: `Aluguel após reajuste de ${pct(reajuste)}`, value: brl.format(aluguel * (1 + reajuste / 100)) },
                     ]}
                     note="Estimativa. O reajuste segue o índice previsto em contrato e as exigências variam por imobiliária."
                     cta="Ver imóveis para alugar"
@@ -35,11 +35,11 @@ function AluguelPanel({ onVerImoveis }: AluguelPanelProps) {
                 />
             }
         >
-            <NumberField label="Aluguel (R$/mês)" value={aluguel} onChange={setAluguel} step={100} />
+            <NumberField label="Aluguel (R$/mês)" value={aluguel} onChange={setAluguel} step={100} max={10_000_000} />
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <NumberField label="Condomínio (R$/mês)" value={condominio} onChange={setCondominio} step={50} />
-                <NumberField label="IPTU (R$/ano)" value={iptu} onChange={setIptu} step={100} />
-                <NumberField label="Reajuste (% ao ano)" value={reajuste} onChange={setReajuste} step={0.5} />
+                <NumberField label="Condomínio (R$/mês)" value={condominio} onChange={setCondominio} step={50} max={10_000_000} />
+                <NumberField label="IPTU (R$/ano)" value={iptu} onChange={setIptu} step={100} max={10_000_000} />
+                <NumberField label="Reajuste (% ao ano)" value={reajuste} onChange={setReajuste} step={0.5} max={100} />
             </div>
         </Panel>
     )

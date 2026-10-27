@@ -14,7 +14,7 @@ function ResultCard({ label, value, suffix, bar, rows, note, cta, onCta }: Resul
     return (
         <aside className="flex flex-col gap-5 rounded-3xl bg-brand-dark p-6 md:p-9 text-white shadow-xl shadow-brand-dark/20">
             <p className="text-sm font-medium text-slate-300">{label}</p>
-            <p className="text-4xl md:text-5xl font-bold tracking-tight">
+            <p className="text-4xl md:text-5xl font-bold tracking-tight break-words">
                 {value}
                 {suffix && <span className="text-lg font-medium text-slate-300">{suffix}</span>}
             </p>

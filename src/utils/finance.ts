@@ -29,6 +29,9 @@ export function simulaSac(financiado: number, anual: number, meses: number) {
 }
 
 
+// porcentagem no padrão brasileiro: 5,5% (e sem 0.30000000000000004)
+export const pct = (valor: number) => `${valor.toLocaleString("pt-BR", { maximumFractionDigits: 2 })}%`
+
 // preço como aparece nos cards: aluguel ganha o "/mês"
 export function formatPreco(price: number, status: "À venda" | "Aluguel"): string {
     return status === "Aluguel" ? `${brl.format(price)}/mês` : brl.format(price)

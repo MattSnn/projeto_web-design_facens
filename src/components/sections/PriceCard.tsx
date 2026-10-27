@@ -124,7 +124,7 @@ function PriceCard({ predio }: PriceCardProps) {
                                 max={30}
                                 step={0.1}
                                 value={taxaAnual}
-                                onChange={(e) => setTaxaAnual(Math.max(Number(e.target.value) || 0, 0))}
+                                onChange={(e) => setTaxaAnual(Math.min(Math.max(Number(e.target.value) || 0, 0), 30))}
                                 className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-brand-dark"
                             />
                         </label>
