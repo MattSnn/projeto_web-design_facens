@@ -81,14 +81,11 @@ function NavBar({ activePage, setActivePage, LinkIDs }: NavBarProps) {
                 <div className="flex-1">
                     <a
                         href="./"
-                        className="inline-flex items-center gap-2 font-display text-xl md:text-[1.7rem] font-semibold tracking-tight"
+                        className="font-heading text-2xl md:text-[1.7rem] font-extrabold tracking-tight"
                         onClick={(e) => goTo(e, "initialPage")}
                     >
-                        <img src="/favicon.svg" alt="" className="h-8 w-8 md:h-9 md:w-9" />
-                        <span>
-                            <span className="text-brand-dark">Imobi</span>
-                            <span className="text-brand-muted">Faces</span>
-                        </span>
+                        <span className="text-ink">Imobi</span>
+                        <span className="text-logo">Faces</span>
                     </a>
                 </div>
                 <div className="hidden md:flex gap-1 text-sm font-semibold text-slate-600">

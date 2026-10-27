@@ -47,10 +47,9 @@ function Footer() {
                         <a
                             href={buildUrl("initialPage")}
                             onClick={(e) => abrir(e, "initialPage")}
-                            className="inline-flex items-center gap-2 font-display text-2xl font-semibold"
+                            className="font-heading text-[1.7rem] font-extrabold tracking-tight"
                         >
-                            <img src="/favicon.svg" alt="" className="h-9 w-9" />
-                            <span><span className="text-white">Imobi</span><span className="text-accent">Faces</span></span>
+                            <span className="text-white">Imobi</span><span className="text-accent">Faces</span>
                         </a>
                         <p className="mt-4 max-w-xs text-sm leading-relaxed text-brand-light/60">
                             Encontre o imóvel ideal com segurança e agilidade. Atendimento em São Paulo, Campinas, Sorocaba e Santos.
